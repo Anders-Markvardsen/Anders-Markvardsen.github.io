@@ -1,0 +1,114 @@
+Listed as in cryst.             sorted table
+handbook
+
+P -  -  -            0    |    F d  d  -      9.30372
+P -  -  21           0    |    P -  -  -            0
+P -  21 -            0    |    P -  -  21           0
+P -  21 21           0    |    P -  21 -            0
+P 21 -  -            0    |    P -  21 21           0
+P 21 -  21           0    |    P 21 -  -            0
+P 21 21 -            0    |    P 21 -  21           0
+P 21 21 21           0    |    P 21 21 -            0
+P -  -  a            0    |    P 21 21 21           0
+P -  -  b            0    |    P -  -  a            0
+P -  -  n            0    |    P -  -  b            0
+P -  a  -            0    |    P -  -  n            0
+P -  a  a            0    |    P -  a  -            0
+P -  a  b            0    |    P -  a  a            0
+P -  a  n            0    |    P -  a  b            0
+P -  c  -            0    |    P -  a  n            0
+P -  c  a            0    |    P -  c  -            0
+P -  c  b            0    |    P -  c  a            0
+P -  c  n            0    |    P -  c  b            0
+P -  n  -            0    |    P -  c  n            0
+P -  n  a            0    |    P -  n  -            0
+P -  n  b            0    |    P -  n  a            0
+P -  n  n            0    |    P -  n  b            0
+P b  -  -            0    |    P -  n  n            0
+P b  -  a            0    |    P b  -  -            0
+P b  -  b            0    |    P b  -  a            0
+P b  -  n            0    |    P b  -  b            0
+P b  a  -            0    |    P b  -  n            0
+P b  a  a            0    |    P b  a  -            0
+P b  a  b            0    |    P b  a  a            0
+P b  a  n            0    |    P b  a  b            0
+P b  c  -            0    |    P b  a  n            0
+P b  c  a            0    |    P b  c  -            0
+P b  c  b            0    |    P b  c  a            0
+P b  c  n            0    |    P b  c  b            0
+P b  n  -            0    |    P b  c  n            0
+P b  n  a            0    |    P b  n  -            0
+P b  n  b            0    |    P b  n  a            0
+P b  n  n            0    |    P b  n  b            0
+P c  -  -            0    |    P b  n  n            0
+P c  -  a            0    |    P c  -  -            0
+P c  -  b            0    |    P c  -  a            0
+P c  -  n            0    |    P c  -  b            0
+P c  a  -            0    |    P c  -  n            0
+P c  a  a            0    |    P c  a  -            0
+P c  a  b            0    |    P c  a  a            0
+P c  a  n            0    |    P c  a  b            0
+P c  c  -            0    |    P c  a  n            0
+P c  c  a            0    |    P c  c  -            0
+P c  c  b            0    |    P c  c  a            0
+P c  c  n            0    |    P c  c  b            0
+P c  n  -            0    |    P c  c  n            0
+P c  n  a            0    |    P c  n  -            0
+P c  n  b            0    |    P c  n  a            0
+P c  c  n            0    |    P c  n  b            0
+P n  -  -            0    |    P c  c  n            0
+P n  -  a            0    |    P n  -  -            0
+P n  -  b            0    |    P n  -  a            0
+P n  -  n            0    |    P n  -  b            0
+P n  a  -            0    |    P n  -  n            0
+P n  a  a            0    |    P n  a  -            0
+P n  a  b            0    |    P n  a  a            0
+P n  a  n            0    |    P n  a  b            0
+P n  c  -            0    |    P n  a  n            0
+P n  c  a            0    |    P n  c  -            0
+P n  c  b            0    |    P n  c  a            0
+P n  c  n            0    |    P n  c  b            0
+P n  n  -            0    |    P n  c  n            0
+P n  n  a            0    |    P n  n  -            0
+P n  n  b            0    |    P n  n  a            0
+P n  n  n            0    |    P n  n  b            0
+C -  -  -            0    |    P n  n  n            0
+C -  -  21           0    |    C -  -  -            0
+C -  - (ab)          0    |    C -  -  21           0
+C -  c  -            0    |    C -  - (ab)          0
+C -  c (ab)          0    |    C -  c  -            0
+C c  -  -            0    |    C -  c (ab)          0
+C c  - (ab)          0    |    C c  -  -            0
+C c  c  -            0    |    C c  - (ab)          0
+C c  c (ab)          0    |    C c  c  -            0
+B -  -  -            0    |    C c  c (ab)          0
+B -  21 -            0    |    B -  -  -            0
+B -  -  b            0    |    B -  21 -            0
+B - (ac)-            0    |    B -  -  b            0
+B - (ac)b            0    |    B - (ac)-            0
+B b  -  -            0    |    B - (ac)b            0
+B b  -  b            0    |    B b  -  -            0
+B b (ac)-            0    |    B b  -  b            0
+B b (ac)b            0    |    B b (ac)-            0
+A -  -  -            0    |    B b (ac)b            0
+A 21 -  -            0    |    A -  -  -            0
+A -  -  a            0    |    A 21 -  -            0
+A -  a  -            0    |    A -  -  a            0
+A -  a  a            0    |    A -  a  -            0
+A(bc)-  -            0    |    A -  a  a            0
+A(bc)-  a            0    |    A(bc)-  -            0
+A(bc)a  -            0    |    A(bc)-  a            0
+A(bc)a  a            0    |    A(bc)a  -            0
+I -  -  -     -2631.79    |    A(bc)a  a            0
+I -  - (ab)   -2631.79    |    F -  -  -            0
+I - (ac)-     -2631.79    |    F d  -  d     -6.93855
+I -  c  b     -2631.79    |    F d  d  d     -6.93855
+I(bc)-  -     -2631.79    |    F -  d  d     -12.7346
+I c  -  a     -2631.79    |    I -  -  -     -2631.79
+I b  a  -     -2631.79    |    I -  - (ab)   -2631.79
+I b  c  a     -2631.79    |    I - (ac)-     -2631.79
+F -  -  -            0    |    I -  c  b     -2631.79
+F -  d  d     -12.7346    |    I(bc)-  -     -2631.79
+F d  -  d     -6.93855    |    I c  -  a     -2631.79
+F d  d  -      9.30372    |    I b  a  -     -2631.79
+F d  d  d     -6.93855    |    I b  c  a     -2631.79

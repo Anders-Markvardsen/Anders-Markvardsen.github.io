@@ -1,0 +1,79 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>Maximum likelihood + powders (Markvardsen's Academic Web)</title>
+<script src="scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="images/three-particle-large.png" />
+<link href="../index.html" rel="home" title="Home" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>Maximum likelihood and powder diffraction</h1>
+<p class="name">
+<a href="../index.html">Anders J. Markvardsen</a>, <em class="last_modified">last modified 12th 
+December 2009.</em>
+</p>
+<p><span class="intro_headers">Outcome</span>: Applying the maximum likelihood method in the context of structure solution from powder diffraction data. </p>
+<p>This web page is structured as follows:</p>
+<ul>
+  <li>Introduction</li>
+  <li>An example </li>
+<li>History of this document</li>
+<li>References </li>
+</ul>
+<h2>Introduction</h2>
+<p>The maximum likelihood method is perhaps one of the oldest and most used methods in applied statistics. This method aims to calculate the probability, p(<em>data</em>| <em>params</em>),   of some <em>data</em> being true given a set of parameters of a model are true. Finding the maximum likelihood then correspond to locating the set of parameters that maximises the likelihood probability. This set of parameters is often referred to as the maximum likelihood estimate. </p>
+<p>Prior to this work the maximum likelihood had been successfully applied to the study of single-crystal data, in particular in the field of macromolecular crystallography, see for example [1-5]. To purpose of this work was to carry the success of the applying the maximum likelihood method  on single-crystal data over to the analysis of powder diffraction data. A powder diffraction pattern can be viewed as a 1D projection of a 3D single-crystal pattern and as a consequence of this, peaks well separated in the single-crystal pattern may overlap in the powder pattern. In [6] we formulated   a likelihood figure-of-merit, FOM-LIKE, suitable for powder 
+diffraction that can be calculated almost as fast as the standard least-squared figure-of-merit (FOM-LS). The FOM-LS includes the assumption that the model used to fit the data is flawless. This assumption is relaxed in the design of the FOM-LIKE figure of merit, where parts of the model can be associated with uncertainty. </p>
+<h2>An example </h2>
+<p>As an example, consider determining the crystal structure of remacemide nitrate by first locating the larger remacemide ion and thereafter the position of the smaller nitrate ion; the latter task is trivial, once the remacemide ions is correctly located. The remacemide ion and nitrate ion are shown in the figure below. </p>
+<div class="figure"> 
+  <img src="images/max-likelihood-remacemide-nitrate.gif" width="382" height="150">
+  <br class="clearleft" />
+    <span class="figurecaption"><b>Figure 1</b>: 
+	The structures of the remacemide ion to the left and nitrate ion to the right.
+	</span>
+</div>
+<p>First the FOM-LS is used to locate the remacemide ion. That is, the nitrate ion is treated as non-existent. The result of this is demonstrated in Fig. 2, which compares the correct crystal structure of remacemide nitrate on the left with the best structure obtained using the FOM-LS (for more details see [6])</p>
+<div class="figure">
+<img src="images/max-likelihood-fom-ls.png" width="411" height="258">
+  <br class="clearleft" />
+    <span class="figurecaption"><b>Figure 2</b>: 
+	(a) The correct crystal structure of remacemide nitrate. 
+	(b) The best solution obtained from a model consisting only of the remacemide ion and using the FOM-LS.
+	</span>
+</div>
+<p>Using FOM-LS implicitly assumes that the incomplete model (consisting of the remacemide ion only) is the <em>complete</em> model, an effect of this is that the remacemide ion is twisted, such as to try to occupy both the space meant for this ion and the nitrate ion; the result is that the remacemide ion ends up 'somewhere in between' the nitrate ion and remacemide ion as seen by comparing Fig. 2(a) and Fig. 2(b). </p>
+<p>Using the FOM-LIKE it is possible to improve this situation. The FOM-LIKE allows parts of the model to be earmarked as being highly uncertain, more specifically, allows some of the positional coordinates of the model to be treated as completely uncertain. Repeating the simulation in Fig. 2 using the FOM-LIKE the result in Fig. 3 is obtained. Here, the positional coordinates of the nitrate ion are treated as completely uncertain. That way, we recognize  the 'presence' of the nitrate ion, although with its position coordinates treated as completely uncertain, and this is an improvement compared to treating the nitrate ion as 100% non-existent. This improvement is seen by comparing Fig. 2 and 3; in Fig. 3 the correct motif of the remacemide ion is revealed unlike in Fig. 2. </p>
+<div class="figure">
+<img src="images/max-likelihood-fom-like.png" width="411" height="258">
+  <br class="clearleft" />
+    <span class="figurecaption"><b>Figure 3 </b>: 
+	(a) The correct crystal structure of remacemide nitrate. (b) The best solution obtained from a model consisting of the remacemide ion and the nitrate ion as an completely uncertain 'blur' and using the FOM-LIKE.</span></div>
+<p>In summary, the maximum likelihood approach presented here allows for parts of the model to be treated as highly uncertain. Such a treatment might be advantageous in a structure solution approach when parts of the model are suspected to be disordered, or if it is desirable to reduce the complexity of the structure solution task by initially only solving for parts of the model. </p>
+<h2>History or this document </h2>
+<ul>
+<li>The first version of this document was completed 8/10-04.</li>
+<li>Had not read through this page since it was first created. Improved wording of parts
+of this page but not its content. 12th December 2009.</li>
+</ul>
+<h2>References</h2>
+<ol class="references">
+  <li>N. S. Pannu and R. J. Read, Acta Cryst. A52, 659 (1996) </li>
+  <li>G. N. Murshudov, A. A. Vagin and E. J. Dodson, Acta Cryst. D53, 240 (1997) </li>
+  <li>X. Q. Mu,  and L. Makowski, Acta Cryst. A56, 168 (2000) </li>
+  <li> R. J. Read, Methods Enzymol. 277, 110 (1997)</li>
+  <li>G. Bricogne, G., Methods Enzymol. 276, 361 (1997) </li>
+  <li>A. J. Markvardsen, W. I. F. David and K. Shankland, Acta Cryst. A58, 316 (2002) <A href="http://www.fastignitor.org/ral_table_tennis/index.html"><img src="images/one_pixel.png" alt="test of one pixel" width="1" height="1" border="0"></A></li>
+</ol>
+</body>
+</html>

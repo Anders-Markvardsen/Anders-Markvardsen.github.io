@@ -1,0 +1,20 @@
+ When reading the table below keep in mind that more than one space group may
+ have the same Extinction Symbol. For more info about this see the International
+ Tables for Crystallography Vol A. For further info about how to interpret this file
+ visit: www.markvardsen.net/projects/ExtSym/explain-output.html
+
+ The extinction symbols are ranked in order of probability with the most probable
+ symbol being listed first
+
+ Extinction Symbol      log-probability score
+
+ R -  -  -                    183.373
+ R -  -  c                    102.743
+ P 31  - -                    10.1417
+ P 62 -  -                    10.1417
+ P 61 -  -                    8.35789
+ P -  c  -                    7.78605
+ P 63 -  -                     3.3958
+ P -  -  -                          0
+ P -  -  c                   -40.5738
+ P -  c  c                   -40.5738

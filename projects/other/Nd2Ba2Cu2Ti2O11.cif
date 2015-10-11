@@ -1,0 +1,45 @@
+data_II
+_symmetry_cell_setting    	tetragonal
+_symmetry_space_group_name_H-M    	'P 4/m m m'
+loop_
+    _symmetry_equiv_pos_as_xyz
+    x,y,z 
+    -x,-y,z 
+    -x,y,z 
+    x,-y,z 
+    -y,x,z 
+    y,-x,z 
+    y,x,z 
+    -y,-x,z 
+    -x,-y,-z 
+    x,y,-z 
+    x,-y,-z 
+    -x,y,-z 
+    y,-x,-z 
+    -y,x,-z 
+    -y,-x,-z 
+    y,x,-z
+_cell_length_a    	3.9046
+_cell_length_b    	3.9046
+_cell_length_c    	15.718
+_cell_angle_alpha    	90
+_cell_angle_beta    	90
+_cell_angle_gamma    	90
+_cell_formula_units_Z     1
+loop_
+    _atom_site_label
+    _atom_site_fract_x
+    _atom_site_fract_y
+    _atom_site_fract_z
+    _atom_site_occupancy
+    _atom_site_type_symbol
+    Nd1 0.5       0.5       0 1.0 Nd 
+    Nd2 0.5       0.5       0.5 1.0 Nd 
+    Ba 0.5       0.5 0.2358 1.0 Ba 
+    Cu1 0 0 0.1075 1.0 Cu  
+    Ti2 0 0 0.371 1.0 Ti
+    O1 0 0 0.5 0.25 O 
+    O2 0 0.5 0.385 0.5 O 
+    O3 0 0 0.2561 1.0 O 
+    O4 0 0.5 0.0974 1.0 O 
+

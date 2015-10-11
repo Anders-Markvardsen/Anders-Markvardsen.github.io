@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>HMC algorithm (Markvardsen's Academic Web)</title>
+<script src="scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="images/three-particle-large.png" />
+<link href="../index.html" rel="home" title="Home" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>A hybrid Monte Carlo algorithm</h1>
+<p class="name">
+<a href="../index.html">Anders J. Markvardsen</a>, <em class="last_modified">last modified 8th 
+October 2004.</em>
+</p>
+<p><span class="intro_headers">Outcome</span>: Introduction of novel computer search algorithm in the field of structure determination from powder diffraction data. </p>
+<p>This web page is structured as follows:</p>
+<ul>
+  <li>Introduction</li>
+  <li>Some results </li>
+<li>History of this document</li>
+<li>References </li>
+</ul>
+<h2>Introduction</h2>
+<p>The hybrid Monte Carlo (HMC) algorithm presented here has it origin in numerical simulations in lattice field theory and was brought to the attention of ISIS by John Johnston. It is a method that aims to combine key components of molecular dynamics and the Monte Carlo approach into one efficient algorithm for exploring a search space.</p>
+<p>Here the position and orientation of molecular fragments and internal torsion angles within fragments make up the search space. These 'degrees of freedom' (DOF) can be varied and the collection of all possible DOF configurations  defines the search space. A figure-of-merit (FOM) function is associated with the search space, that is, for each configuration a FOM value can be calculated. In solving a crystal structure, the goal is to search for the configuration that matches the lowest possible value of the FOM function; this configuration is the global minimum of the FOM. </p>
+<p>The HMC algorithm [1] takes the following approach. Imagine a fictive particle whose coordinates are defined by the DOF of the search space. Further, interpret the FOM function as the potential energy function of this fictive particle. Then imagine 'kicking' this particle and observing the path it follows according to the classical (Hamiltonian) equation of motions &ndash; this is the molecular dynamics component of the algorithm. The Monte Carlo component is included to 'patch' a known problem of molecular dynamics. Due to numerical rounding errors it is computationally difficult to maintain the fictive particle on the (correct) path as dictated by the Hamiltonian equation of motions, and the particle tends to 'drift' off this path. To reduce the 'damage' of this effect, at appropriate intervals the particle is 'stopped' and an assessment is made (using a Metropolis criterion) whether the particle has moved too far of its path &ndash; this is the Monte Carlo component of the algorithm;  if the particle has drifted too far  it is returned to its previous position. Regardless of whether the particle is returned to its previous position  the particle is 'kicked' off in a new direction in the search space.</p>
+<h2>Some results</h2>
+<p>A number of different search algorithms have been applied for structure determination from powder diffraction. One of the more frequently used is simulated annealing (SA), for instance used in the commercial software DASH. To judge the efficiency of the HMC algorithm presented here it was compared with the simulated annealing algorithm in the DASH software via the structure solution of Capsaicin, see the figure below. </p>
+<div class="figure">
+<img src="images/hmc-capsaicin.gif" width="358" height="95">
+	<br class="clearleft" />
+    <span class="figurecaption"><b>Figure 1</b>: 
+	The molecular structure of capsaicin.  The arrows denote  
+	torsion angles that cannot be assigned correctly in advance of a structure determination.
+	</span>
+</div>
+<p>The bond angles and bond length between atoms in the Capsaicin molecule can be looked up in a crystallographic database, for instance using the CSD (Cambridge Structural Database). The 9 'torsion' angles, indicated by the arrows in Fig. 1, are unknown. For a given conformation of these torsions angles and a given position and orientation of the molecule  in the unit cell (another 6 degrees of freedom) a dataset can be calculated. This calculated dataset can then be compared to the observed dataset by means of a FOM. The smaller the FOM the better the fit is between the calculated and observed dataset, and the structure which corresponds to the smallest value of the FOM is most likely to correspond to the actual  crystal structure. </p>
+<p>The crystal structure of Capsaicin was searched for in twenty independent attempts using the HMC algorithm and twenty independent attempts using the SA algorithm. The results obtained using the HMC algorithm are illustrated in the figure below. </p>
+<div class="figure">
+<img src="images/hmc-hmc-algorithm.gif" width="319" height="240">
+	<br class="clearleft" />
+    <span class="figurecaption"><b>Figure 2 </b>: 
+	Shows the best (smallest) FOM value as a function of the first 1 million FOM evaluations
+	 for 20 independent HMC runs.
+The y-axis label 'Chi-squared' is the name of the FOM function used.</span>
+</div>
+<p>
+The speed of the algorithm is proportional to the number of times the FOM function is
+evaluated. The fewer such evaluations are used to reach the configuration corresponding to the global minimum of the FOM, the faster the algorithm. In Fig. 2 the smallest FOM value recorded after a given number of evaluations is displayed for twenty independent HMC runs. The global minimum of the Capsaicin FOM is just below 90, from Fig. 2 it is seen that 15 of the 20 runs the HMC algorithm successfully reached this target. The equivalent plot using the SA algorithm is shown in Fig. 3. </p>
+<div class="figure">
+  <img src="images/hmc-sa-algorithm.gif" width="319" height="240">
+      <br class="clearleft" />
+      <span class="figurecaption"><b>Figure 3 </b>: 
+	    Shows the best FOM value as a function of the first 1 million FOM evaluations
+	     for 20 independent SA runs. The y-axis label 'Chi-squared' is the name of the FOM function used</span>.
+</div>
+<p>The SA algorithm was successful in only 1 out of 20 runs. Thus, the efficiency of the HMC algorithm is clearly demonstrated. </p>
+<h2>History or this document </h2>
+<p>The first version of this document was completed 8/10-04.</p>
+<h2>References</h2>
+<ol class="references">
+  <li>J. C. Johnston, W. I. F. David , A. J. Markvardsen , K. Shankland, Acta Cryst. A58, 441-447 (2002) <A href="http://www.fastignitor.org/ral_table_tennis/index.html"><img src="images/one_pixel.png" alt="test of one pixel" width="1" height="1" border="0"></A></li>
+</ol>
+</body>
+</html>

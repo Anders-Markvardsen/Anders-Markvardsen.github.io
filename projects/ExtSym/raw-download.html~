@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>Content of raw ExtSym zip file</title>
+<script src="../scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="../css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="../images/three-particle-large.png" />
+<link href="../../index.html" rel="home" title="Home" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>Content of the raw downloadable  ExtSym zip file </h1>
+<p class="name">
+To return to the main ExtSym page click <a href="main.html">here</a>. <em class="last_modified">L<EM class=last_modified><em class="last_modified">ast modified 10th December 07</em>.</EM></em></p>
+<p><span class="intro_headers">Summary</span>: From this page ExtSym can be downloaded  in the form it was originally presented in Ref. [1], i.e. without any additional <a href="main.html#download">support scripts</a>. This page also details the two parameter files which ExtSym  reads when executed. </p>
+<p>This web page is structured as follows:</p>
+<ul>
+  <li>Content of the raw ExtSym zip file</li>
+  <li>History of this document</li>
+<li>References</li>
+</ul>
+<h2>Content of the raw ExtSym zip file</h2>
+<p>The <span class="filename_style">ExtSym</span> program, its two required parameter files and an example powder dataset can be downloaded from <a href="../download/ExtSym2008UpdateV1.zip">here</a> (Windows 32bit binary), <a href="../download/ExtSym2008Linux32bit.tar.gz">here</a> (Linux 32bit binary) and <a href="../download/ExtSym2006IntelMacOSX.zip">here</a> (Intel Mac OSX). The content of this downloadable zip file is more specifically: </p>
+<ul>
+  <li><span class="filename_style">ExtSym</span> (program executable)</li>
+  <li><span class="filename_style">parameter_input.asc</span> (input parameter file)</li>
+  <li><span class="filename_style">advanced.asc</span> (input parameter file)</li>
+  <li><span class="filename_style">carbamazepine.hkl</span> (example input powder data file)</li>
+</ul>
+<p>Please do not hesitate to contact me if you would prefer another binary version of the executable. </p>
+<h3>Running ExtSym</h3>
+<p>To execute ExtSym type: <span class="filename_style">ExtSym.exe</span> (or <span class="filename_style">ExtSym</span> on Linux/Mac) from the command prompt. ExtSym will  read in the default parameter files <span class="filename_style">parameter_input.asc</span> and <span class="filename_style">advanced.asc</span>, followed by the powder data file as specified in the <span class="filename_style">parameter_input.asc</span> file. ExtSym outputs one file, <span class="filename_style">table.asc</span>, for a description of this file click <a href="explain-output.html">here</a>. </p>
+<h3>parameter_input.asc</h3>
+<p>Required parameter input file to ExtSym. Used to specify the filename of the powder data file and the Laue class of your crystalline powder. The powder data file is required to have either the extension .hkl or .hkl_weight as explained in detail on <a href="with-unknown-decom-prog.html">this web page</a>. </p>
+<h3><a name="advanced_asc"></a>advanced.asc</h3>
+<p>Required parameter input file to ExtSym. Used to specify more <em>specialised</em> parameters to ExtSym, hence the reason for its name. </p>
+<p>Parameters in advanced.asc can be used to influence the accuracy by which ExtSym calculates its probability integrals and <span class="filename_style">advanced.asc</span> also includes a convenience parameter for scaling the covariance matrix (error bars) contained in a .hkl (or .hkl_weight) file.</p>
+<p>The first parameter of <span class="filename_style">advanced.asc</span> is a rescale data error  parameter, which is discussed <a href="with-unknown-decom-prog.html#section_overall_scale">here</a> and equals A*GOF on that page. The effect of this parameter is to multiply the covariance matrix by the square of this number. For a <a href="with-unknown-decom-prog.html#hkl_format">.hkl file</a> this is achieved by multiplying the 5th column by this number and for a <a href="with-unknown-decom-prog.html#hkl_weight_format">.hkl_weight file</a> by dividing the 5th column by this number. </p>
+<p>The second, third and fourth parameters of <span class="filename_style">advanced.asc</span> all concern the accuracy by which ExtSym calculate its probability integrals. The second parameter is the 'correlation cutoff' parameter. It affects the decision as to whether two neighboring intensities are treated as uncorrelated (see Ref. [1], Sec 4.1 for more on this). With a high value for this parameter more intensities will be treated as uncorrelated and as a result the execution time will decrease. This is because there will be fewer integrals in the program, which need to be evaluated numerically by the Monte Carlo method, see [1] Sec 4. The higher the correlation cutoff value the more the correlation between neighboring intensities is ignored. For the data examples in Ref. [1] a value of 40% was used. </p>
+<p>As soon as two or more intensities are treated as correlated, the program executes the Monte Carlo method, see [1] sec. 4. The aim when using the Monte Carlo method is to evaluate integrals below the accuracy specified by the 'tolerance' parameter. If this is not achieved for an integral this integral is discarded. Like the correlation cutoff parameter the tolerance parameter is a percentage value. This tolerance can be thought of as the uncertainty that is allowed in the numerical calculation of the integral. Hence, all integrals that are not discarded are calculated to an accuracy better than the tolerance. By increasing this value the integrals will be calculated faster but with higher inaccuracy. The 3rd parameter in advanced.asc is named 'max Monte Carlo iterations'. It controls the maximum number of Monte Carlo iterations spend on getting the accuracy below the tolerance level. Reducing this number will typically reduce the execution time of ExtSym as a consequence of more integrals being discarded and therefore not contributing to the calculation of the final output: the extinction symbol probability table returned in <a href="explain-output.html"><span class="filename_style">table.asc</span></a>. </p>
+<h3>carbamazepine.hkl</h3>
+<p>Is an example powder data set in the <a href="with-unknown-decom-prog.html#hkl_format">.hkl format</a>. This dataset is one of the datasets downloadable from this <a href="results.html#result_table_topas">table</a>. It is the carbamazepine dihydrate (C<span class="subscript">15</span>H<span class="subscript">12</span>N<span class="subscript">2</span>O 2H<span class="subscript">2</span>O) entry in that table. The space group of this crystaline powder is Cmca, which belong to the extinction symbol C - c (ab). </p>
+<h2>History or this document </h2>
+<ul>
+  <li>The first version of this document was completed 5th June 2007. </li>
+  <li>Added links to Linux and Mac binaries. Many thanks to Tim Charlton for compiling up the Mac version. 10th December 2007. </li>
+</ul>
+<h2>References</h2>
+<OL class=references><LI>A. J. Markvardsen, W. I. F. David, J. Johnston and K. Shankland, Acta Cryst. A57, 47 (2001).</LI>
+</OL>
+</body>
+</html>

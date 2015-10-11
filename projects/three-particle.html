@@ -1,0 +1,99 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>Three particle project (Markvardsen's Academic Web)</title>
+<script src="scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="images/three-particle-large.png" />
+<link href="../index.html" rel="home" title="Home" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>Three particle problem</h1>
+<p class="name">
+<a href="../index.html">Anders J. Markvardsen</a>, <em class="last_modified">last modified 12th 
+December 2009.</em>
+</p>
+<p><span class="intro_headers">Outcomes</span>: (i) This work extends the well-known (three-particle) Calogoro model by allowing the particles to have different charges; (ii) This extended model provide insight into the stability of three particle complexes relative to two particle complexes in one-dimensional quantum wires; (iii) In this process new highly accurate, approximate solutions to the Heun differential equation were found and a new trigonometric identity  extending a trigometric formula by Calogora was identified. </p>
+<p>This web page is structured as follows:</p>
+<ul>
+  <li>Setting the scene</li>
+  <li>Extending the Calogoro  three particle model</li>
+<li>History of this document</li>
+<li>References </li>
+</ul>
+<h2>Setting the scene </h2>
+<p>Imagine a one-dimensional (1D) system containing three electrons restrained to move within a segment by harmonic potentials. In classical mechanics a harmonic potential may represented a spring. Consider a point along the 1D axis and denote this point the origin. Attach three springs to the origin and the other ends of the springs to each of the three electrons. This 1D system may be visualised as follows:</p>
+<div class="figure">
+  <a href="javascript:display('images/three-particle-model-big.png')">
+    <img src="images/three-particle-model.png" alt="Three particles in one dimension" width="373" height="60" border="0" title="Click to view figure in larger format" /></a>
+    <br class="clearleft" />
+      <span class="figurecaption"><b>Figure 1</b>: 
+An illustration of the three particle system. The figure is meant to help visualise the model. Click on the image to view it in a larger format. </span></div>
+<p>Two electrons expel each other by the Coulomb interaction. Hence, the model in Fig. 1 would be very predictable (and boring) if no springs were present; since the electrons would just expel each other until separated by an infinite distance. However, by including the springs we have a much more interesting situation where electrons try to expel each other and the springs try to force the electrons towards a center point (the origin). </p>
+<p>The &quot;physics&quot; motivation for studying this model is linked to  nano-structure devices; an example is a so-called quantum-dot device trapping a single electron. </p>
+<p>Although the model in Fig. 1 may look simple the quantum mechanical equation for this model cannot be solved analytically. However, Calogoro [1] showed that, using a modified Coulomb potential an analytical solution could be found - the corresponding model is today known as the Calogoro model [1].</p>
+<p>The Coulomb potential between two electrons decays as one over the distance between the electrons; an effect of this is that the further the electrons are apart the weaker the repulsion between them. The modification Calogoro made was to say: assume that the potential between two electrons decay as one over the <em>squared</em> distance between the electrons. Mathematically, this modified Coulomb potential can be written as</p>
+<div class="equation">
+<img src="images/three-particle-one-over-squared-distance.png" width="90" height="24" border="0" align="middle" />
+<span class="equation_space">,</span><span class="equation_number">(1)</span>
+</div>
+<br/> 
+<p> where  x<span class="subscript">1</span> and x<span class="subscript">2</span> are the position coordinates of electron 1 and 2. In comparison the Coulomb potential has the form</p>
+<div class="equation">
+<img src="images/three-particle-one-over-distance.png" width="80" height="24" border="0" align="middle" /><span class="equation_space">.</span>
+</div>
+<p>The advantage of using the modified Coulomb potential is that an analytical solution can more easily be found.</p>
+<H2>Extending the Calogoro three particle model </H2>
+<p>We took on the challenge of extending the work of Calogoro [1] by considering not only the case of three identical electrons in 1D but also the case of two electrons and one 'hole'; a 'hole' might be thought of as an electron with positive charge rather than having a negative charge. Studying this system took place in two stages.</p>
+<p>1. <strong>Doing the mathematics</strong>. In [2] we show that solving the Schrodinger equation for the two-electron-one-hole system described above can be reduced to the problem of solving a Heun differential equation. Heun's equation is fairly well studied in the literature [3], although cases for which analytical solutions to this equation are known are rare. Although we cannot in general solve Heun's equation for our problem analytically, we obtained a set of highly accurate, approximate solutions for the regions of physical interest. In this process the trigonometric formula was identified </p>
+<div class="figure">
+  <img src="images/three-particle-trig-formula.png" alt="Trigonometric formula" width="417" height="51">
+    <br class="clearleft" />
+</div>  
+<p>which for the special case f = -g reduces to the trigonomtric identity found by Calogero [1].  Denote q<span class="subscript">ee</span> to be the strength of the interaction between two electrons and q<span class="subscript">eh</span> the strength of the interaction between a hole and an electron, then it was observed that the potential energy of the Hean differential equation can be approximated highly accurately as shown in the figure below</p>
+<div class="figure">
+  <img src="images/three-particle-approximation.png" alt="Compare exact and approximate potential function" width="447" height="324">
+    <br class="clearleft" />
+      <span class="figurecaption"><b>Figure 2</b>: Comparison of the approximate potential and exact potential. </span></div>    
+<p>The ratio kappa = q<span class="subscript">ee</span> / q<span class="subscript">eh</span> measure the relative strength of the electron-electron interaction and electron-hole interaction. The dotted lines shows the approximate potential, and even for a value of kappa = 40 the approximate potential is very close to the exact potential and for kappa &lt;= 1 they are visually indistinguishable. For typical practical electronic devices kappa is expected to be less than 10. Within this approximation Heun's equation transforms into the problem of solving a hypergeometric equation for which known analytical solutions exist. </p>
+<p>2. <strong>Interpretation of the analytical solutions</strong>. Use the following notation: </p>
+<ul>
+<li> X<span class="superscript">-</span> denotes a two-electron-one-hole complex</li>
+<li> X denotes a one-electron-one-hole complex</li>
+</ul>
+<p>  Which of these complexes are most stable for different values of the electron-electron interaction strength q<span class="subscript">ee</span> and electron-hole strength q<span class="subscript">eh</span>? To investigate this the 'interaction' energy, E<span class="subscript">int</span>, for the two complexes are compared; where 'interaction' here refers to the energy difference between the total energy of a complex with the interaction between the particles turned off (by setting q<span class="subscript">ee</span>, q<span class="subscript">eh</span> = 0) and not turned off. The interaction energy for the two complexes are </p>
+<div class="equation">
+<img src="images/three-particle-eint-x.png" width="136" height="24">
+</div>
+<p>for the X complex, where </p>
+<div class="equation">
+<img src="images/three-particle-delta.png" width="175" height="24">
+</div>
+<p>and </p>
+<div class="equation">
+<img src="images/three-particle-eint-xminux.png" width="399" height="34">
+</div>
+<p>for the X<span class="superscript">-</span> complex. A closer analysis of these expressions reveals that if the ratio q<span class="subscript">ee</span> / q<span class="subscript">eh</span> is less than 11, then X<span class="superscript">-</span> is  more stable than X measured in terms of interaction energy. Therefore if this ratio is less than 11, as is the case for  typical experimental devices, this would suggest that X<span class="superscript">-</span> is more strongly bound than X.</p>
+<h2>History or this document </h2>
+<ul>
+<li>The first version of this document was completed 30/10-04.</li>
+<li>Had not read through this page since it was first created. Improved wording of parts
+of this page  but not its content. 12th December 2009.</li>
+</ul>
+<h2>References</h2>
+<ol class="references">
+  <li>F. Calogoro, J. Math. Phys. 10, 2191 (1969) </li>
+<li>A. J. Markvardsen and N. F. Johnson, J. Math. Phys. 38, 4013 (1997)</li>
+<li><em class="reference">Heun's Differential Equation</em>, edited by A. Ronvenaux (Oxford University Press, Oxford, 1995)</li>
+</ol>
+</body>
+</html>

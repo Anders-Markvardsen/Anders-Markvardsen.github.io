@@ -1,0 +1,91 @@
+body {
+	margin-left: 5%; margin-right: 3%; font-family: sans-serif
+}
+h2 {
+	margin-left: -2%; padding-top: 0.3cm
+}
+h1 {
+
+}
+h3 {
+	font-weight: bold;
+}
+table.header {
+	border-right: medium none; border-top: medium none; border-left: medium none; 
+	border-bottom: medium none; background-color: transparent; vertical-align: top
+	text-align: left
+}
+td.title {
+	padding-left: 0.7cm; vertical-align: top
+}
+td.picture {
+	vertical-align: top
+}
+span.filename_style {
+	font-family: "Courier New", Courier, monospace
+}
+span.intro_headers { 
+	color: green; font-weight: bold; font-size: large
+}
+span.subscript { 
+	vertical-align: sub; font-size: smaller
+}
+span.superscript {
+	vertical-align: super; font-size: smaller
+}	
+div.equation {
+	margin-left: 0.5cm
+}
+span.equation_text {
+	font:"Times New Roman", Times, serif;
+	font-style: italic;
+}
+span.equation_space {
+	margin-left: 0.5cm; text-align: right
+}
+span.equation_number {
+	margin-left: 0.5cm;  
+}
+span.figurecaption {
+	font-size: smaller
+}	
+div.figure {
+	margin-left: 0.5cm
+}
+.clearleft {
+	clear:left;
+}
+ol.references {
+	list-style-position: outside
+}
+em {
+	FONT-STYLE: italic
+}
+p.name {
+	padding-bottom: 0.4cm
+}
+em.name {
+	font-weight: bold; font-style: italic
+}
+em.last_modified {
+	font-style: italic
+}
+em.reference {
+	font-style: italic
+}
+a:link {
+	font-weight: bold; color: #64762B; text-decoration: none
+}
+a:hover {
+	font-weight: bold; background-color: #ECFFEC; text-decoration: none
+}
+a:visited {
+	font-weight: bold; color: #64762B; text-decoration: none
+}
+#bottomtext{
+	font-size: x-small;
+	color: #006600;
+	padding: 10px 10px 10px 10px;
+	margin-top: 0px;
+	text-align: center
+}

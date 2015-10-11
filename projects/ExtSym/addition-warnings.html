@@ -1,0 +1,43 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>ExtSym output explained</title>
+<script src="../scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="../css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="../images/three-particle-large.png" />
+<link href="../../index.html" rel="home" title="Home" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>Before using ExtSym through the DASH GUI </h1>
+<p class="name">
+To return to the main ExtSym page click <a href="main.html">here</a>. <em class="last_modified">Last modified 7th August 2008.</em></p>
+<p><span class="intro_headers">Summary</span>: Things to be aware of before executing the ExtSym executable from within the DASH GUI. </p>
+<p>This web page is structured as follows:</p>
+<ul>
+  <li>Warning</li>
+  <li>History of this document</li>
+  <li>References</li>
+</ul>
+<h2>Warning</h2>
+<p>As is probably the case for all powder decomposition programs, including DASH, an expert user will on average produce better Pawley fits than a novice user and the better the fit to the data the better the resulting ExtSym output. By experience it has been found that novice users of the DASH software are likely to accept a Pawley fit that an expert DASH user would classify as rather poor. This will in general not affect the results obtained from global optimisation runs performed with DASH, but  will  affect the ExtSym outcome for reasons which are explained <a href="with-unknown-decom-prog.html#section_overall_scale">here</a>. Therefore before hitting the ExtSym button in DASH (named 'Run&gt;' in the 'Pawley Refinement Step 2' DASH wizard) it is strongly recommended that good effort is put into obtaining the best possible DASH Pawley fit. </p>
+<p>August 2008: As noted by a referee to the paper [1] there is a bug in DASH which resets trigonal Pawley refined data to hexagonal. As a result of this, for versions prior to August 2008, don't use ExtSym from within DASH if you have a trigonal crystal system. </p>
+<h2>History or this document </h2>
+<ul>
+  <li>The first version of this document was completed 14th November 2007.</li>
+  <li>Added comment about trigonal/hexagonal issue. 7th August 2008. </li>
+</ul>
+<h2>References</h2>
+<OL class=references><LI>A. J. Markvardsen, K. Shankland, W. I. F. David, J. Johnston, R. M. Ibberson, M. Tucker, H. Nowell and T. Griffin, J. Appl. Cryst. 41, 1177 (2008).</LI>
+</OL>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>ExtSym output explained</title>
+<script src="../scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="../css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="../images/three-particle-large.png" />
+<link href="../../index.html" rel="home" title="Home" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>Explanation of the ExtSym output  </h1>
+<p class="name">
+To return to the main ExtSym page click <a href="main.html">here</a>. <em class="last_modified">Last modified 24th November 2008.</em></p>
+<p><span class="intro_headers">Summary</span>: This page describes the output returned by the ExtSym program, that is the file  <span class="filename_style">table.asc</span>. </p>
+<p>This web page is structured as follows:</p>
+<ul>
+  <li>Introduction</li>
+  <li>History of this document</li>
+  <li>References</li>
+</ul>
+<h2>Introduction</h2>
+<p> ExtSym is designed to help crystallographers determining the extinction symbol of a crystalline powder sample from powder diffraction data. Before using ExtSym it is assumed that the crystallographer has successfully indexed the unit cell and therefore knows the crystal system that the crystalline powder belongs to.</p>
+<p>ExtSym outputs a ranked list of the extinction symbols belonging to a crystal system; measured in terms of the logarithm of the probability of the extinction symbol in question (E<span class="subscript">gr</span>) divided by the probability of the extinction symbol that symbolize no systematic absences (E<span class="subscript">---</span>):</p>
+<div class="figure"> <img src="../images/ext-sym-equation-log-probability.png" alt="log probability equation" width="128" height="56"> 
+    <br class="clearleft" />
+      <span class="figurecaption"><b>Equation 1</b>: The log probabilities returned by ExtSym in table.asc.
+  </span>
+</div>
+<p> For example, for the monoclinic crystal system with unique axis <em>b</em> we have E<span class="subscript">---</span> = 'P 1 - 1' (see the International Tables for Crystallography [1]). An example ExtSym output  for a monoclinic crystal system with unique axis <em>b</em> is shown below:</p>
+<div class="figure">
+<p><img src="../images/ext-sym-table_afterJuly2007.png" alt="ExtSym output after July 2007" width="362" height="213"><br class="clearleft" />
+      <span class="figurecaption"><b>Figure 1</b>: Shows the content of a table.asc file returned by ExtSym.
+      </span></p>
+</div>
+<p>The 1st column lists the monoclinic extinction symbols as defined in the International Tables for Crystallography [1] and the 2nd column shows the log probability of each symbol as defined in Eq. 1. A positive log probability means the corresponding extinction symbol is more probable than P  <span class="subscript">- - -</span> and vice versa for negative log probabilities. Notice that for the output in Fig. 1 it just happens that only one extinction symbol is more probable than P 1 - 1.</p>
+<p>Note that prior to July 2007 the output returned by ExtSym used the slightly more verbose form: </p>
+<div class="figure">
+<img src="../images/ext-sym-table.png" alt="extinction symbol table" width="427" height="223">
+    <br class="clearleft" />
+<span class="figurecaption"><b>Figure 2 </b>: Shows the content of a table.asc file returned by ExtSym prior to July 2007.  </span></div>
+<p>Examples of  ExtSym outputs (including the one above) can be downloaded by clicking any entry in the &quot;Best ExS&quot; column in any of the tables displayed on the <a href="results.html">ExtSym result page</a>. </p>
+<p>For further discussions of the ExtSym output see Ref. [2-3]. </p>
+<h3>Warnings</h3>
+<ul>
+  <li>The absolute values of the log probabilities returned in <span class="filename_style">table.asc</span> may depend considerably on the process by which .hkl files are generated from raw data files. Different Pawley or le Bail programs may provide outputs that, when converted into the .hkl format, result in considerably different absolute values of the log probabilities, while in general still keeping the same relative ranking order of the extinction symbols. Therefore when inspecting a <span class="filename_style">table.asc</span> file don't try to focus too hard on the individual log probability magnitudes but instead on their relative values. </li>
+  <li>Although Extsym is shown on the <a href="results.html">result page</a> to have an impressive success in matching the most probable symbol to the published symbol,<em> this may not apply to your data</em>. Hence, please consider the ExtSym output as a guide to <em>help</em> you determine the correct extinction symbol for your crystalline material; the correct symbol may not be the top ranked symbol but perhaps the 3rd or 4th.</li>
+</ul>
+<h2>History or this document </h2>
+<ul>
+  <li>The first version of this document was completed 13th November 2006.</li>
+<li>Added info  about new output format (as suggested by Matt Tucker) 30th July 2007. </li>
+<li>Swapped all occurencies of 'Laue class' with 'crystal system'. 7th August 2008. </li>
+<li>Added ref to follow up ExtSym paper. 24th November 2008. </li>
+</ul>
+<h2>References</h2>
+<OL class=references>
+  <LI>International Table for Crystallography (1983). Vol. A, edited by Th. Hahn. Dordrecht: Kluwer Academic Publishers. [Revised editions: 1987, 1989, 1993, 1995, 1996].</LI>
+<LI>A. J. Markvardsen, W. I. F. David, J. Johnston and K. Shankland, Acta Cryst. A57, 47 (2001).</LI>
+<LI>A. J. Markvardsen, K. Shankland, W. I. F. David, J. Johnston, R. M. Ibberson, M. Tucker, H. Nowell and T. Griffin, J. Appl. Cryst. 41, 1177 (2008). </LI>
+</OL>
+</body>
+</html>

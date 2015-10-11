@@ -1,0 +1,125 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>Using ExtSym with various well known powder programs</title>
+<script src="../scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="../css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="../images/three-particle-large.png" />
+<link href="../../index.html" rel="home" title="Home" />
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>Using ExtSym with various powder decomposition program </h1>
+<p class="name">
+To return to the main ExtSym page click <a href="main.html">here</a>. <em class="last_modified">Last modified 20th December 09.</em></p>
+<p><span class="intro_headers">Summary</span>: Here it is discussed how to use ExtSym together with PRODD, FullProf, GSAS, DASH and Topas. At present ExtSym works best with DASH, PRODD and Topas because these programs directly outputs the <a href="with-unknown-decom-prog.html">weight matrix elements</a> required by the ExtSym program. Neither FullProf nor GSAS output, at present, the weight matrix elements and additional assumptions/hacks (as described below) are required to get these programs to work with ExtSym. The recipies below are all demonstrated using a Windows' binary form of ExtSym. Other binary versions are available from <a href="raw-download.html">here</a>. </p>
+<p>This web page is structured as follows:</p>
+<ul><li>How to use ExtSym togehter with FullProf </li>
+  <li>How to use ExtSym togehter with GSAS </li>
+  <li>How to use ExtSym with output from PRODD </li>
+  <li>How to use ExtSym with output from Topas</li>
+  <li>How to use ExtSym with output from DASH (TF12LS) </li>
+  <li>History of this document</li>
+<li>References</li>
+</ul>
+<h2><a name="section_fullprof"></a>How to use ExtSym together with FullProf </h2>
+<p>FullProf is one of the main free powder diffraction analysis programs. It can be downloaded from <a href="http://valmap.dfis.ull.es/fullprof/php/downloads.php">here</a>. It is harder to write a script with works with FullProf compared to for instance PRODD and Topas because FullProf does not output the weight matrix elements. The script below makes the following assumptions when calculating weight matrix elements (which are required for the ExtSym program, see <a href="with-unknown-decom-prog.html">here</a>):</p>
+<ul>
+  <li>Regardless of the peak shape function used to fit the data in FullProf we assume here that the peak shape is Gaussian with no asymmetry corrections and using the FWHM values that are returned by FullProf in the CODFILn.hkl file. </li>
+  <li>The LP factor is always assumed to be 1 / (2*(sin(theta))^2 * cos(theta)).</li>
+  <li>The standard deviations of the y-obs are taken to be the square root of the y-obs values.</li>
+</ul>
+<p>In addition the script presented below makes the following assumption:</p>
+<ul>
+  <li>The raw data are not read in from the raw data file, but instead from the .prf file that FullProf outputs when the PRF flag in the FullProf input parameter file is set to PRF=2. Hence to get the script described below to work you must have set PRF=2 in the FullProf parameter file. </li>
+</ul>
+<p>Finally the script is written in Matlab and requires Matlab to run it. Please note the source code is well documented and there exist programs on the internet, which can convert Matlab code into various other programming languages including C, Python and Fortran I believe. Notice also that the script below has to date only been tested on one dataset. </p>
+<p>The current recipe for using ExtSym with output from FullProf is as follows: (this recipe requires Matlab)</p>
+<ol>
+  <li>Le Bail fit your data using FullProf in a space group with no systematic absent reflections. Make a note of the final Chi^2 value returned by FullProf. </li>
+  <li>Unzip <a href="../download/FullProfExtSym2008.zip">this file</a> into the directory containing the FullProf input/output files you are currently working with. </li>
+  <li>From the Matlab command prompt type: <span class="filename_style">fullprof2hkl_weight CODFIL.prf CODFIL1.hkl</span>, where <span class="filename_style">CODFIL</span> is the name of the FullProf parameter file (.pcr or .new file) without the extension. This script returns the file <span class="filename_style">CODFIL.hkl_weight</span>. </li>
+  <li>Open the <span class="filename_style">parameter.asc</span> ExtSym file and below the line &quot;INPUT DATA FILE:&quot; specify the name of the .hkl_weight file generated in 3.</li>
+  <li>Open the <span class="filename_style">advanced.asc</span> ExtSym file and two lines below the line &quot;MODIFY INPUT DATA FILE&quot; replace the number on that line with: 2.0 times the square root of the Chi^2 value noted down in 1.</li>
+  <li>From the Windows command prompt run: <span class="filename_style">ExtSym.exe</span>.</li>
+  <li>That's it! Now examine the output returned by ExtSym, i.e. <span class="filename_style">table.asc</span> (for information about how to read a <span class="filename_style">table.asc</span> file, see <a href="explain-output.html">here</a>).</li>
+</ol>
+<p>For ExtSym test results using FullProf outputs, see <a href="results.html#FullProf_result_table">here</a>.</p>
+<h2><a name="section_gsas"></a>How to use ExtSym together with GSAS </h2>
+<p>GSAS is one of the main free powder diffraction analysis programs. It can be downloaded from <a href="http://www.ncnr.nist.gov/programs/crystallography/software/expgui/expgui_Win_readme.html">here</a>. It is harder to write a script which works with GSAS compared to for instance PRODD and Topas because GSAS does not output the weight matrix elements. The script below makes the following assumptions when calculated weight matrix elements (which are required for the ExtSym program, see <a href="with-unknown-decom-prog.html">here</a>):</p>
+<ul>
+  <li>Regardless of the peak shape function used to fit the data in GSAS we assume here that the peak shape is Gaussian with no asymmetry corrections. </li>
+  <li>The LP factor is assumed to be  d^4*sin(theta).</li>
+  <li>The standard deviations of the y-obs are taken to be something along the lines of the square root of the y-obs values.</li>
+</ul>
+<p>In addition the script presented below makes the following assumption:</p>
+<ul>
+  <li>The script currently only works for time-of-flight data. </li>
+</ul>
+<p>The script is written in Fortran and the source code is available for anyone to improve. Finally notice this script has currently only been tested on one dataset. </p>
+<p>The current recipe for using ExtSym with output from GSAS is as follows: (this recipe requires GSAS to be installed)</p>
+<ol>
+  <li>Le Bail fit your data using GSAS in a space group with no systematic absent reflections. </li>
+  <li>Unzip this file into a directory of your choice and copy the .exp file generated from step 1. to this directory (plus the data). </li>
+  <li>From a command prompt type: <span class="filename_style">gsas_extsym.exe &quot;gsas_directory&quot;</span>, where the argument <span class="filename_style">&quot;gsas_directory&quot;</span> is the name of directory where the GSAS executable is located. If this argument is left out this directory name defaults to &quot;c:\gsas\exe&quot;. (Note do not end the directory name with a backslash!). </li>
+  <li>Follow the instructions of the <span class="filename_style">gsas_extsym.exe</span> script. </li>
+  <li>Examine the output returned by ExtSym, i.e. <span class="filename_style">table.asc</span> (for information about how to read a <span class="filename_style">table.asc</span> file, see <a href="explain-output.html">here</a>).</li>
+</ol>
+<p>For ExtSym test results using FullProf outputs, see <a href="results.html#gsas_result_table">here</a>.</p>
+<h2><a name="section_prodd"></a>How to use ExtSym with output from PRODD </h2>
+<p>PRODD is a free Rietveld refinement program, which can be downloaded from <a href="http://www.ccp14.ac.uk/solution/rietveld_software/index.html">here</a>. Currently PRODD supports the Pawley refinement of time of flight data and constant wavelength neutron and synchrontron data. PRODD is further described in Ref. [3]. </p>
+<p>The current recipe for using ExtSym with output from PRODD is as follows: (this recipe requires <a href="http://www.python.org/download/">Python</a>)</p>
+<ol>
+  <li>Unzip <a href="../download/prodd-recipe.zip">this file</a> in a directory and 'cd' from a Windows command prompt to this directory. Please notice the zip file contains a copy of PRODD (named mprodd.exe in zip file, copy provided by John Wright).  </li>
+  <li>Pawley fit your data using PRODD in a space group with no systematic absent reflections. When PRODD asks 'Do you want to write out the DILS matrix?' answer 'y' to this question. Further, make a note of the final Chi^2 value returned by PRODD. </li>
+  <li>From the Windows command prompt type: <span class="filename_style">python convert_dil.py somename.dil out.hkl_weight</span>, where <span class="filename_style">convert_dil.py</span> is a python script that generates a .hkl_weight file from a .dil file, <span class="filename_style">somename.dil</span> is the DILS file generated in 1., and <span class="filename_style">out.hkl_weight</span> is the .hkl_weight file returned by this python script. </li>
+  <li>Open the <span class="filename_style">parameter.asc</span> ExtSym file and below the line &quot;INPUT DATA FILE:&quot; specify the name of the .hkl_weight file generated in 3.</li>
+  <li>Open the <span class="filename_style">advanced.asc</span> ExtSym file and two lines below the line &quot;MODIFY INPUT DATA FILE&quot; replace the number on that line with: 2.0 times the square root of the Chi^2 value noted down in 1.</li>
+  <li>From the Windows command prompt run: <span class="filename_style">ExtSym.exe</span>.</li>
+  <li>That's it! Now examine the output returned by ExtSym, i.e. <span class="filename_style">table.asc</span> (for information about how to read a <span class="filename_style">table.asc</span> file, see <a href="explain-output.html">here</a>).</li>
+</ol>
+<p>For ExtSym test results using PRODD outputs, see <a href="results.html#PRODD_result_table">here</a>.</p>
+<h2><a name="section_topas"></a>How to use ExtSym with output from Topas</h2>
+<p>Topas comes in two forms: <a href="http://www.bruker-axs.de/">BRUKER-AXS Topas</a> and <a href="http://members.optusnet.com.au/~alancoelho/">Topas Academic</a>. Topas can be operated using .inp &amp; .out files and it is assumed here that you are familiar with creating and modifying .inp/.out files. Further, the recipe below has so far only been tested with the Topas Academic version. </p>
+<p>The current recipe for using  ExtSym with output from Topas is as follows:</p>
+<ol>
+  <li>Unzip <a href="../download/topas-recipe.zip">this file</a> in a directory  and 'cd' from a Windows command prompt to this directory. </li>
+  <li>Modify one of the Topas template .inp files; these are <span class="filename_style">lab-x-ray.inp</span>, <span class="filename_style">constant_wavelenght_neutron.inp</span>, <span class="filename_style">synchrotron.inp</span> and <span class="filename_style">time-of-flight.inp</span>. Use Topas to Pawley refine your data. This will generate a Topas .out file.</li>
+  <li>From the Windows command prompt run: <span class="filename_style">topas2hkl_stage1 in_file.out out_file.inp</span>, where <span class="filename_style">in_file.out</span> is your best fit from the previous step and <span class="filename_style">out_file.inp</span> is the file returned by this program.</li>
+  <li>Run <span class="filename_style">out_file.inp</span> through Topas once. This will generate <span class="filename_style">out_file.out</span>.</li>
+  <li>From the Windows command prompt run: <span class="filename_style">topas2hkl_stage2.exe</span>. You will be asked by this program to: 1) specify a Topas file, use <span class="filename_style">out_file.out</span> from the previous step; 2) name of an output .hkl file (use e.g. <span class="filename_style">out.hkl</span>) and 3) the Laue class symbol for your crystalline powder. </li>
+  <li>From the Windows command prompt run: <span class="filename_style">ExtSym.exe</span>.</li>
+  <li>That's it! Now examine the output returned by ExtSym, i.e. <span class="filename_style">table.asc</span> (for information about how to read a <span class="filename_style">table.asc</span> file, see <a href="explain-output.html">here</a>).</li>
+</ol>
+<p>Warning: The scripts, <span class="filename_style">topas2hkl_stage1.exe</span> and <span class="filename_style">topas2hkl_stage2.exe</span>, supplied with the above recipe are very elementary and contain close to zero error checking. However if you feel like improving these scripts then the source code for these can be downloaded from <a href="../download/topas-scripts.zip">here</a>. topas2hkl_stage1 is a C++ script, and topas2hkl_stage2 is a modified version of a fortran script originally provided by Bill David. </p>
+<p>For ExtSym test results using Topas outputs, see <a href="results.html#result_table_topas">here</a>. </p>
+<h2><a name="section_tf12ls_dash" id="section_tf12ls_dash"></a>How to use ExtSym with output from DASH (TF12LS)</h2>
+<p>TF12LS [1] was released 1992 and is an ISIS in house program based on the Cambridge Crystallographic Software Library (CCSL). Sometime during 2000-1 a modified version of this program was written to form a part of the DASH software [2]. In a later release of DASH, the GUI of DASH was changed such that ExtSym could be called as an external executable from within this interface. DASH is a commercial software package sold by <a href="http://www.ccdc.cam.ac.uk/">CCDC</a>.</p>
+<p>TF12LS stands for Time-of-Flight 12 Least Squares. One of the uses of this program is to Pawley fit powder diffraction data. The TF12LS software is no longer distributed and supported, but mentioned here since ExtSym was originally programmed to work with Pawley outputs from TF12LS.</p>
+<p>The DASH manual has instructions for how to execute ExtSym from within the DASH GUI. In addition it is recommend to read <a href="addition-warnings.html">this page</a> before using ExtSym with DASH. </p>
+<p>For ExtSym test results using DASH(TF12LS) outputs, see <a href="results.html#DASH_result_table">here</a>.</p>
+<h2>History or this document </h2>
+<ul>
+  <li>The first version of this document was completed 13th Nov. 2006. </li>
+  <li>Section on PRODD added 24th April 2007.</li>
+  <li>Added suggestions for corrections by Tom Griffin, 8th June 2007. </li>
+  <li>Added FullProf section 27th June 2007.</li>
+  <li>Added GSAS section. 17th December 2007.</li>
+  <li>Cut out warning about trigonal/topas warning. 29th July 2008. </li>
+  <li>Included more up-to-date DASH reference. 20th December 09. </li>
+</ul>
+<h2>References</h2>
+<OL class=references><LI>David, W.I.F., Ibberson, R.M. and Matthewman, J.C. (1992). <em>Rutherford Appleton Laboratory Report</em>:<strong> RAL-92-032</strong></LI>
+<LI>W. I. F. David, K. Shankland, J. van de Streek, E.  Pidcock,W. D. S. Motherwell,  J. C. Cole, <em>J.  Appl. Cryst., </em>39, 910-915, 2006 </LI>
+<LI>J. P. Wright, Z. Kristallog. 219, 1-11 (2004) </LI>
+</OL>
+</body>
+</html>

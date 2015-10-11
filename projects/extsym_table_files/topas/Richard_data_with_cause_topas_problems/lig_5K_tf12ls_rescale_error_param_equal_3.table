@@ -1,0 +1,118 @@
+ When reading the table below keep in mind that more than one space group may
+ have the same Extinction Symbol. For more info about this see the International
+ tables for Crystallography Vol A. For general info about how to interpret the table
+ below visit: www.markvardsen.net/projects/ExtSym/explain-output.html
+
+ Extinction Symbol      log-probability score
+
+ C -  -  21                   254.494
+ C -  -  -                    250.969
+ C c  -  -                    230.989
+ C -  - (ab)                   225.43
+ C c  - (ab)                   205.45
+ P b  a  n                    114.626
+ P -  a  n                    99.1865
+ P n  a  n                    88.4361
+ P c  a  n                    87.5975
+ P b  a  -                    82.9131
+ P b  a  b                    79.7036
+ P b  a  a                    78.7278
+ P -  a  -                    66.0581
+ P -  a  b                    64.2637
+ P -  a  a                    61.8728
+ P n  a  -                    56.8641
+ P b  -  n                    54.8617
+ P c  a  -                    54.6103
+ P n  a  b                    53.5133
+ P n  a  a                    52.6788
+ P c  a  b                    52.6747
+ P c  a  a                    50.4251
+ P -  -  n                    39.4218
+ P n  -  n                    28.6714
+ P c  -  n                    27.8328
+ P b  -  a                    18.7201
+ P b  -  -                     16.855
+ C -  c  -                    14.9387
+ P b  -  b                    13.8886
+ P 21 21 21                    11.748
+ P 21 -  21                   10.3329
+ P 21 21 -                    7.46547
+ P 21 -  -                    6.05033
+ P -  21 21                   5.69769
+ P -  -  21                   4.28256
+ P -  -  a                    1.86507
+ P -  21 -                    1.41514
+ P -  -  -                          0
+ P -  -  b                   -1.55133
+ P n  -  a                   -7.32895
+ C c  c  -                   -8.56576
+ P n  -  -                   -9.19401
+ P c  -  a                   -9.58269
+ P c  -  -                   -11.4478
+ P n  -  b                   -12.3017
+ P c  -  b                   -13.1403
+ P b  c  n                    -146.15
+ P b  n  n                    -149.25
+ P -  c  n                    -161.59
+ P -  n  n                    -164.69
+ P n  c  n                   -176.622
+ P c  c  n                   -177.461
+ P n  n  n                   -179.723
+ P c  c  n                   -180.562
+ P b  n  -                   -180.923
+ P b  c  -                   -184.153
+ P -  n  -                   -197.778
+ P -  c  -                   -201.008
+ P n  n  -                   -211.254
+ P c  n  -                   -213.508
+ P n  c  -                   -214.484
+ P c  c  -                   -216.738
+ C -  c (ab)                 -223.287
+ C c  c (ab)                 -246.791
+ P b  c  a                   -394.738
+ P b  n  b                   -396.564
+ P b  n  a                   -397.559
+ P b  c  b                   -399.514
+ P -  c  a                   -411.593
+ P -  n  b                   -412.004
+ P -  n  a                   -414.414
+ P -  c  b                   -414.954
+ P n  c  a                    -425.07
+ P n  n  b                   -427.037
+ P c  c  a                   -427.323
+ P c  n  b                   -427.876
+ P n  n  a                    -427.89
+ P n  c  b                   -429.987
+ P c  n  a                   -430.144
+ P c  c  b                   -430.825
+ I b  a  -                      -2651
+ I - (ac)-                   -2656.76
+ I(bc)-  -                   -2682.44
+ I -  -  -                    -2688.2
+ A -  a  a                   -2769.69
+ A -  a  -                   -2780.55
+ A -  -  a                   -2796.17
+ A 21 -  -                   -2807.03
+ A -  -  -                    -2812.8
+ F -  -  -                   -2813.61
+ A(bc)a  a                   -2865.32
+ A(bc)a  -                   -2876.18
+ I b  c  a                   -2891.36
+ A(bc)-  a                    -2891.8
+ B b (ac)b                   -2892.62
+ I -  c  b                   -2897.12
+ B - (ac)b                   -2900.73
+ B b (ac)-                   -2904.22
+ A(bc)-  -                   -2908.43
+ B - (ac)-                   -2913.74
+ B b  -  b                   -2921.88
+ I c  -  a                   -2922.79
+ I -  - (ab)                 -2928.55
+ B -  -  b                   -2929.99
+ B b  -  -                   -2933.42
+ B -  21 -                   -2941.52
+ B -  -  -                   -2942.94
+ F d  d  -                   -3459.72
+ F -  d  d                    -3643.3
+ F d  -  d                   -3840.57
+ F d  d  d                   -4022.34

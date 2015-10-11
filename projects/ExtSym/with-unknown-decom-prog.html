@@ -1,0 +1,152 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><title>How to interface your favourite powder program to ExtSym</title>
+<script src="../scripts/utilities.js" type="text/javascript"></script>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+<link href="../css/projects.css" rel="stylesheet" />
+<link rel="prefetch" href="../images/three-particle-large.png" />
+<link href="../../index.html" rel="home" title="Home" />
+<style type="text/css">
+<!--
+.style1 {color: #3333FF}
+.style3 {color: #FF6600}
+.style5 {color: #FF6600; font-style: italic; }
+-->
+</style>
+</head>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16154432-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<body text=black bgColor=white>
+<h1>Using ExtSym with your own powder decomposition program </h1>
+<p class="name">
+To return to the main ExtSym page click <a href="main.html">here</a>. <em class="last_modified">Last modified 24th November 08.</em></p>
+<p><span class="intro_headers">Summary</span>: This page describes the information  needed to adapt your own powder decomposition software to work with ExtSym. To do this you first need to understand what input the ExtSym program requires. Most importantly, ExtSym does not work directly with raw powder data but requires the raw powder data in a processed format. This page details this processed format and explains how to generate it. For additional information see also Ref. [5]. </p>
+<p>This web page is structured as follows:</p>
+<ul>
+  <li>The processed powder data formats [subsections: &quot;The .hkl format&quot; and &quot;The .hkl_weight format&quot;] </li>
+  <li>How to calculate the weight matrix elements at the end of a le Bail or Pawley refinement</li>
+  <li>Fine tuning the data input to ExtSym </li>
+  <li>List of space groups with no systematic absences </li>
+  <li>History of this document</li>
+<li>References </li>
+</ul>
+<h2>The processed powder data formats</h2>
+<p>ExtSym only allows powder data to be read into the program in two formats that are closely related:</p>
+<ul>
+  <li><em>.hkl format:</em> The powder data that was originally used for testing  the ExtSym algorithm came in this format. Therefore this format is the 'native' format for the ExtSym program.</li>
+  <li><em>.hkl_weight format:</em> In connected with writing the ExtSym web pages, the ExtSym code  was modified to allow for this additional format. In general, this format should be easier to generate than the .hkl format. ExtSym performs equally well with either formats. </li>
+</ul>
+<h3><a name="hkl_format"></a>The .hkl format</h3>
+<p>This format originates from the TF12LS program [2]. The .hkl format aims to summarize the output from a powder decomposition refinement and it contains: </p>
+<ul>
+  <li>The Lorentz-polarisation corrected, extracted intensities from the refinement </li>
+  <li>Estimated standard deviations and (optionally) normalised off-diagonal covariance matrix elements</li>
+</ul>
+<p>To explain the .hkl format in detail let us first introduce the notation:</p>
+<ul>
+  <li><em>h</em> and <em>k</em> each refer to one or more Bragg reflections. Most frequently <em>h</em> (or <em>k</em>) will represent just one Bragg reflection. However, when performing a le Bail or Pawley fit it is not uncommon to refine the sum of two or more Bragg intensities for reflections that are somehow judged to be sufficiently close to each other in the powder pattern. For such cases <em>h</em> (or<em> k</em>) represents the set of Bragg reflections making up such a refineable sum. For the purpose of this web page think of <em>h</em> (or <em>k</em>) as an index from 1 to P, where P is the number of le Bail or Pawley refined intensity values. Thus <em>h</em>=1 may represent the [0 0 1] reflection, <em>h</em>=2 the [0 0 2] reflection, <em>h</em>=3 the [1 0 0] and [0 1 0] reflections and so on.</li>
+</ul>
+<p>Further, let <strong>C</strong> denote a covariance matrix with dimensions P x P and C<span class="subscript">hk</span> an element of this matrix. A normalised covariance element is calculated as B<span class="subscript">h,k</span> =100 * C<span class="subscript">hk</span> / (C<span class="subscript">hh</span>*C<span class="subscript">kk</span>)^1/2 (see Eq. (9) in Ref. [1] for more on this, although notice there is a typographical error in that equation: -1/2 should be replaced by 1/2).</p>
+<p>The .hkl format stores an upper band of the normalised matrix elements; that is the elements: (C<span class="subscript">ii</span>)^1/2, B  <span class="subscript">i,i+1</span></span>, B <span class="subscript">i,i+2</span>,...., B <span class="subscript">i,i+n-1, </span>B<span class="subscript">i,i+n</span> for all i = 1, 2, ...., P and n&lt;=N. This correspond to ignoring the Bragg peak overlap between any two intensities that are separated by more then n intensities. </p>
+<p>More specifically the .hkl format consists of lines having the form:</p>
+<P> <span class="style1">hkl</span> <span class="style3">Intensity(<em>h</em>)</span> <span class="style1">C<span class="subscript">hh</span>^1/2 </span><span class="style5">h</span> <span class="style1">B<span class="subscript">h,h+1</span></span> <span class="style1">B<span class="subscript">h,h+2</span> .... B<span class="subscript">h,h+n-1</span> B<span class="subscript">h,h+n</span></span> </P>
+<p>where </p>
+<ul>
+  <li><span class="style1">hkl</span>: are the Miller indices of a Bragg reflection.</li>
+  <li><span class="style3">Intensity(<em>h</em>)</span>: is a refined integrated intensity  including preferably the multiplicity factor. </li>
+  <li><span class="style1">C<span class="subscript">hh</span>^1/2</span>: is the square root of a diagonal covariance matrix element.</li>
+  <li><span class="style5">h</span>: plays the role of a counter starting with <em>h</em> = 1 for the first line. See description of <em>h</em> (and <em>k</em>) above. When <em>h</em> represents more than one Bragg reflection then this results in the output of  two or more consecutive identical lines except for different [h k l] values. </li>
+  <li><span class="style1">B<span class="subscript">h,h+1</span></span> <span class="style1">B<span class="subscript">h,h+2</span> .... B<span class="subscript">h,h+n-1</span> B<span class="subscript">h,h+n</span></span>: are normalised covariance elements measuring the correlation between the intensity values.   </li>
+</ul>
+<p>Shown below is an example of what this format might look like for a real dataset:</p>
+<div class="figure">
+<img src="../images/ext-sym-prog-cut-of-hkl-dataset.png" width="508" height="418">
+    <br class="clearleft" />
+      <span class="figurecaption"><b>Figure 1</b>:
+			Output from the version of the Pawley program in Ref. [2] that form part of the DASH software.
+  </span>
+</div>
+<p>The two lines highlighted in blue in Fig. 1 show an example where the DASH(TF12LS) program has decided not to treat the intensity for [1 0 0] and [-1 0 1] as two separate refineable variables but instead decided only to refine on the sum of these two intensities. </p>
+<p>The output above was obtained from the powder decomposition of the Hydrochlorothiazide dataset described in Ref. [3]. A part of the powder pattern for this dataset is shown below for comparison with the Pawley output in Fig. 1:</p>
+<div class="figure">
+  <img src="../images/ext-sym-prog-cut-of-data.png" width="508" height="302">
+	<br class="clearleft" />
+<span class="figurecaption"><b>Figure 2</b>: Part of a dataset. The green tick marks at the top show the Bragg positions as they are listed in Fig. 1. Ignore the numbers above some of the peaks and the corresponding shaded areas. </span></div>
+<h3><a name="hkl_weight_format"></a>The .hkl_weight format </h3>
+<p>For ExtSym to recognise that an input powder data file conforms to the .hkl format described above this file must have the extension .hkl. Similarly for ExtSym to recognise the format described in this subsection the input data file must have the extention .hkl_weight (this is not fantastic programming but was quick to implement). A .hkl_weight file presents a raw powder pattern in exactly the same way as a .hkl file except that the covariance matrix elements are stored in their inverse format, i.e. as weight matrix elements. To be precise a .hkl_weight file is required to conform to the .hkl format  except for the following differences. A .hkl_weight file consists of lines:</p>
+<p><span class="style1">hkl</span> <span class="style3">Intensity(<em>h</em>)</span> <span class="style1">W<span class="subscript">hh</span>^1/2 </span><span class="style5">h</span> <span class="style1">X<span class="subscript">h,h+1</span></span> <span class="style1">X<span class="subscript">h,h+2</span> .... X<span class="subscript">h,h+n-1</span> X<span class="subscript">h,h+n</span></span> </p>
+<p>where </p>
+<ul>
+  <li><span class="style1">W<span class="subscript">hh</span>^1/2</span>: is the square root of a diagonal weight matrix element.</li>
+  <li><span class="style1">X<span class="subscript">h,h+1</span></span> <span class="style1">X<span class="subscript">h,h+2</span> .... X<span class="subscript">h,h+n-1</span> X<span class="subscript">h,h+n</span></span>: are normalised weight elements calculated using X <span class="subscript">hk</span> =100 * W <span class="subscript">hk</span> / (W<span class="subscript">hh</span>*W<span class="subscript">kk</span>)^1/2.</li>
+</ul>
+<h2>How to calculate the weight matrix elements at the end of a le Bail or Pawley refinement</h2>
+<p>First introduce some notation in addition to the notation introduced at the beginning of the subsection of 'The .hkl format' above.</p>
+<p>In a powder decomposition refinement the <em>i</em>th observed point in the diffraction pattern, y<span class="subscript">i</span><span class="superscript">obs</span>, is compared against</p>
+<div class="figure"><img src="../images/ext-sym-equation-y-cal.png" alt="y_cal equation" width="184" height="56"><span class="figurecaption">.</span></div>
+<p>where b<span class="subscript">i</span> is the background value for the <em>i</em>th point in the diffraction pattern. I<span class="subscript">h</span> is the refineable intensity variable for Bragg reflection(s) <em>h</em>. It may contain the multiplicity, p<span class="subscript">h</span>, or other factors depending on how f<span class="subscript">ih</span> is defined relative to I<span class="subscript">h</span> in a given powder decomposition software. f<span class="subscript">ih</span> should contain any contributions such that the y<span class="subscript">i</span> calculated using the equation above can be successfully fitted to the y<span class="subscript">i</span><span class="superscript">obs</span>. You might imagine that f<span class="subscript">ih</span> takes a form not too dissimilar from:</p>
+<div class="figure">
+  <img src="../images/ext-sym-equation-fih.png" alt="fih expression" width="148" height="37">
+  <br class="clearleft" />
+      <span class="figurecaption"><b>Equation 1 </b>:  
+The definition of f<span class="subscript">ih</span> determines the values of the refined integrated intensities.</span></div>
+<p>where L<span class="subscript">h</span> is the Lorentz-polarisation factor, A<span class="subscript">ih</span> asymmetry and G<span class="subscript">ih</span> normalised profile shape function value (notation used here is taken from Ref. [4]). </p>
+<p>Values for the integrated  intensities, I<span class="subscript">h</span>,  may be obtained by using either the Le Bail or Pawley technique. Either way, at  the end of such a refinement weight matrix elements can be calculated using the  expression</p>
+<div class="figure"><img src="../images/ext-sym-equation-weight-matrix.png" alt="equation weight matrix" width="165" height="66"> <br class="clearleft" />
+    <span class="figurecaption"><b>Equation 2 </b>:  
+      Formula for a weight matrix element. For those familiar with least squares: the weight matrix is simply equal to the Hessian matrix of the linear least squares FOM, sum_i (y<span class="subscript">i</span><span class="superscript">obs</span>-y<span class="subscript">i</span>)^2/2, where the I<span class="subscript">h</span> are the parameters to be determined. </span></div>
+<p>The sum is over points in the diffraction pattern and sigma_i is the estimated standard deviation for the <em>i</em>th observed value, y<span class="subscript">i</span><span class="superscript">obs</span>, in the pattern. </p>
+The ExtSym algorithm makes the assumption that,  for the part of the pattern used in the Le Bail or Pawley fitting, the expected  average intensity at any point in the fitted part of the pattern is the same.  For this reason it is better not to have the multiplicity included as part of the f<span class="subscript">ih</span> in Eq. [1] since the multiplicity times the statistical weight for each reflection in  a pattern is a constant (see Bricogne 1991 and references therein). Further,  the inclusion of any other terms in the expression for f<span class="subscript">ih</span> in Eq. [1] which would balance the  mean intensity to be closer to constant should make ExtSym work better; for  example, correcting for the intensity falloff due to the temperature effect.  However, in practice, it is found that ExtSym is fairly robust to some changes in  the definition of f<span class="subscript">ih</span> in Eq. [1]. For example, the .hkl files  produced by DASH do not include the multiplicity in the intensity values, but  this output when slightly modified, as described in the following section, works  very well with ExtSym as is demonstrated in <a href="results.html#DASH_result_table">Table 1</a>.
+<h2><a name="section_overall_scale"></a>Fine tuning the data input to ExtSym  </h2>
+<p>Once a translation script has been written for  generating .hkl_weight (or .hkl) files from your favorite powder decomposition program, these files may with advantage be adjusted  before used as input to ExtSym. </p>
+<p>The extinction symbol probabilities calculated by ExtSym are strongly dependent on the ratios: 'intensity values' to 'covariance matrix element values' in comparison to the absolute values of these individually.</p>
+<p>This is easy to understand by considering an isolated peak  in a diffraction pattern that has one possible present Bragg reflection associated with it as illustrated in the figure below.</p>
+<div class="figure">
+<img src="../images/ext-sym-one-peak-one-tickmark.png" alt="one peak and one tickmark" width="322" height="327">
+	<br class="clearleft" />
+<span class="figurecaption"><b>Figure 3</b>: Shows a peak in a powder diffraction pattern with has one Bragg reflection associated with it.</span>
+</div>
+<p>Say an extracted intensity of<span class="equation_text"> I</span>=1000 has  been refined for this peak. This information by itself is not useful to ExtSym because the main purpose of the program is to make  judgments about the probability of certain peaks being present or absent, and knowing only the Bragg intensity is not enough for this. From Fig. 3 we should  agree that the reflection associated with the tick mark under the peak is extremely likely to be present! However, imagine you had never seen the data in Fig. 3 before and only given the information that the intensity is <span class="equation_text">I</span>=1000; this information alone does not tell you whether this Bragg reflection is present or perhaps absent. But, if you were given the information that <span class="equation_text">I</span>=1000&plusmn;1 then this information tells you that the reflection is extremely likely to be present whereas <span class="equation_text">I</span>=1000&plusmn;10000 informs you that this reflection may or may not be present. ExtSym is no different. It does not 'see' the raw powder data, only the extracted intensities and covariance matrix elements and the ratios of these number must be a fair representation of the raw powder data. </p>
+<p>As an example: performing a Pawley refinement using  <a href="with-known-decom-prog.html#section_tf12ls_dash">DASH (TF12LS)</a> will in general return a .hkl file containing accurate normalised off-diagonal covariance matrix elements but the squared (diagonal) elements in column 5 or the .hkl may not be on an accurate absolute overall scale. These two programs Pawley refine against the squared of the goodness-of-fit (GOF):<a name="GOF_equation"></a></p>
+<div class="figure"><img src="../images/ext-sym-equation-profile-fom.png" alt="profile figure of merit" width="387" height="76">
+<br class="clearleft" />
+      <span class="figurecaption"><b>Equation 3 </b>:  
+chi<span class="superscript">2</span><span class="subscript">profile</span> figure-of-merit formula.</span></div>
+<p>where <span class="equation_text">y<span class="subscript">i</span></span> and <span class="equation_text">y<span class="subscript">i</span><span class="superscript">obs</span></span> are the <em>i</em>th calculated and observed data point in the diffraction pattern, <span class="equation_text">N</span> the number of such points and <span class="equation_text">P</span> the number of parameters which are refined. For a &quot;perfect&quot; fit GOF should close to one. However, perhaps due to awkward lineshapes, background, impurities, limitations of software etc. it is not uncommon that a best GOF ends up being say GOF=5. When calculating the covariance matrix by inverting the weight matrix in Eq. 2, the resulting matrix elements contain no history about the quality of the fit. By comparing Eq. 2 with Eq. 3 it is seen that these equations share the same denominator: 1/[sigma_i]^2. Thus, to partially include in the covariance matrix elements an awareness of not perfected fitted data by the decomposition refinement it is here suggested that the weight matrix is divided by (A*GOF)^2, which equates to multiplying the covariance matrix by the same number or multiplying the sigma_i's in Eq. 1 by A*GOF, where A is a parameter you unfortunately have to determine. It depends on the specific powder decomposition implementation you are using. See the <a href="results.html">ExtSym test web page</a> for examples of how a good  value for A can be determined. The value A*GOF is set in the ExtSym parameter input file <a href="raw-download.html#advanced_asc">advanced.asc</a>. Note that, for a powder diffraction package that performs consistent good Pawley or Le Bail fit, and which follow the recommendations of this page you should expect to find a best performing value for A close to one. </p>
+<p>Keep in mind that the above is only a suggestion for how to include in the covariance matrix a reminder about a possible refinement misfit; it is expected to be more accurate when the  misfit is distributed throughout the pattern rather than being a large discrepancy in a narrow region of the pattern.</p>
+<h2>List of Space group with no systematic absences </h2>
+<p> A .hkl (or .hkl_weight) file should be prepared from a refinement of the diffraction pattern in a space group that has no systematic absences. Examples of such space groups are listed below for the various crystal systems:</p>
+<ul>
+  <li>Monoclinic with unique axis b: P 1 2 1, P 1 m 1, P 1 2/m 1.</li>
+  <li>Orthorhombic: P 2 2 2, P m m 2, P m 2 m, P 2 m m, P m m m.</li>
+  <li>Tetragonal: P 4, P bar4, P 4/m, P 4 2 2, P 4 m m, P bar4 2 m, P bar4 m 2, P 4/m m m.</li>
+  <li>Trigonal: P 3, P bar3, P 3 2 1, P 3 m 1, P bar3 m 1, P 3 1 2, P 3 1 m, P bar3 1 m. </li>
+  <li> Hexagonal: P 6, P bar6, P 6/m, P 6 2 2, P 6 m m, P bar6 2 m, P bar6 m 2, P 6/m m m. </li>
+  <li>cubic: P 2 3, P m bar3, P 4 3 2, P bar4 3 m, P m bar3 m. </li>
+</ul>
+<h2>History or this document </h2>
+<ul>
+  <li>The first version of this document was completed 13th Nov. 2006.</li>
+  <li>Moved the secion 'Content of downloadable zip file' into a new web page and added new section 'How to calculate the weight matrix elements, completed 5th June 07.</li>
+  <li>Added suggestions for corrections by Tom Griffin, 8th June 2007. </li>
+  <li>Corrected a topo in an equation and other topos in section headings etc. 14th February 2008. </li>
+  <li>Made  section &quot;How to calculate the weight matrix elements...&quot; read better. 7th August 2008. </li>
+  <li>Added ref to follow up ExtSym paper. 24th November 2008. </li>
+</ul>
+<h2>References</h2>
+<OL class=references>
+  <LI>A. J. Markvardsen, W. I. F. David, J. Johnston and K. Shankland, Acta Cryst. A57, 47 (2001)</LI>
+  <LI>David, W.I.F., Ibberson, R.M. and Matthewman, J.C. (1992). <em>Rutherford Appleton Laboratory Report</em>:<strong> RAL-92-032</strong></LI>
+  <LI>David, W. I. F., Shankland, K., Cole, J., Maginn, S., Motherwell, W. D. S. &amp; Taylor, R. (2001). DASH user manual. Cambridge Crystallographic Data Centre, Cambridge, UK.</LI>
+  <LI>C. Giacovazzo. <em>Direct Phasing in Crystallography</em>. IUCr Monographs on Crystallography 8. Oxford University Press 1998. </LI>
+  <LI>A. J. Markvardsen, K. Shankland, W. I. F. David, J. Johnston, R. M. Ibberson, M. Tucker, H. Nowell and T. Griffin, J. Appl. Cryst. 41, 1177 (2008). </LI>
+</OL>
+</body>
+</html>
