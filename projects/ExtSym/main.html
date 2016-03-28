@@ -25,7 +25,7 @@ pageTracker._trackPageview();
 <body text=black bgColor=white>
 <h1>ExtSym (Extinction Symbol) program</h1>
 <p class="name">
-<a href="../../index.html">Anders J. Markvardsen</a>, <em class="last_modified">last modified <EM class=last_modified>11th December 09</EM>.</em></p>
+<a href="../../index.html">Anders J. Markvardsen</a>, <em class="last_modified">last modified <EM class=last_modified>11th March 16</EM>.</em></p>
 <p><span class="intro_headers">Summary</span>: This page is the main access point to the computer program: ExtSym. </p>
 <p>This web page is structured as follows:</p>
 <ul>
@@ -49,10 +49,11 @@ pageTracker._trackPageview();
 <h2>Required ExtSym input</h2>
 <p>Extsym requires the input data to be in the form of Lorentz-polarisation corrected, extracted intensities (for more information see <a href="with-unknown-decom-prog.html">here</a>). Which means that before you use ExtSym you must perform a Pawley or le Bail refinement in a space group that has no systematic absences (for instance, P222 for an orthorhombic indexed crystal, p2 for a monoclinic indexed crystal and so on). </p>
 <p>There exist no common format for the output formats returned by Pawley and le Bail programs, and these tend to be different from the input format required by ExtSym (described <a href="with-unknown-decom-prog.html">here</a>). Hence, scripts have been written for making it easier to use ExtSym with various programs. See the Download section below. </p>
-<p>Currently, it may be argued that the most easy way of using the ExtSym program is through the commercial software <a href="http://www.ccdc.cam.ac.uk/">DASH</a>, which includes a graphical user interface from which ExtSym can be executed. However, before trying this out it is recommended to read <a href="addition-warnings.html">this  page</a> first. </p>
+<p>The ExtSym program is shipped with the commercial software <a href="http://www.ccdc.cam.ac.uk/">DASH</a>, which includes a graphical user interface from which ExtSym can be executed. Before trying this out it is recommended to read <a href="addition-warnings.html">this  page</a> first. 
+As of 11th March 2016 ExtSym is also shipped with <a href="http://www.panalytical.com/Xray-diffraction-software/HighScore.htm">HighScore</a> from PANalytical (incorporated in the "Plus" option). </p>
 <p>Another strategy is to forget about using the ExtSym program as described on these pages and  write your own version of the space-group algorithm in Ref. [1]. <a href="http://www.accelrys.com/">Accelrys</a> has done this and their implementation is part of the commercial Reflex software. </p>
 <h2><a name="copyright"></a>Copyright</h2>
-<p> Copies of any binary version of ExtSym can be used for any purpose. The code makes heavy use of the Numerical Recipies library [2] (and also makes a couple of calls to functions from [3]) and because of the copyrights on these codes the source code of ExtSym is not available for download. The main reference for ExtSym is Ref. [4].</p>
+<p> Copies of any binary version of ExtSym can be used for any purpose. The code makes heavy use of the Numerical Recipies library [2] (and also makes a couple of calls to functions from [3]). The source code minus the Numerical recipies libraries is now downloadable from <a href="https://github.com/Anders-Markvardsen/ExtSym">here</a>. The main reference for ExtSym is Ref. [4].</p>
 <h2><a name="download"></a>Downloads </h2>
 <p>ExtSym can be downloaded in 'raw format' or bundled together with various support scripts that make it easier to use ExtSym with a number of existing powder decomposition programs; note these scripts come with zero warranty. The source code for these are provided and these may be used as a starting point for written improved scripts.</p>
 <ul>
@@ -74,6 +75,7 @@ pageTracker._trackPageview();
 <li>7/8-2008: Replaced 'Laue class' with 'crystal system' in parameter input file.</li>
 <li>9/8-2008: Spotted and corrected for subtle error in way the systematic absences were handled for some of the hexagonal/trigonal extinction symbols. </li>
 </ul>
+<P>For most recent version of the source code now see <a href="https://github.com/Anders-Markvardsen/ExtSym">here</a></P>
 <h2>Errata to  Ref. [1]</h2>
 <p>Errata to Acta Cryst. A57, 47 (2001):</p>
 <ul>
@@ -81,16 +83,11 @@ pageTracker._trackPageview();
   <li>There is a misprint in Eq. (7). This equation should read C<span class="subscript">ij</span> / (C<span class="subscript">ii</span>*C<span class="subscript">jj</span>)<span class="superscript">1/2</span> not C<span class="subscript">ij</span> / (C<span class="subscript">ii</span>*C<span class="subscript">jj</span>)<span class="superscript">-1/2</span>.</li>
   <li>Replace all occurancies of 'Laue class' with 'crystal system'. </li>
 </ul>
-<h2>History or this document </h2>
+<h2>Updates to this document includes</h2>
 <ul>
-  <li>The first version of this document was completed 13th Nov. 2006.</li>
-  <li>Updated various including in particular the download section 23rd May 2007. </li>
-  <li>Added warning section, expanded download section and cut out a bit of unnessary text. 22nd Oct 2007. </li>
-  <li>Added trigonal/hexagonal entry to  section 'change to the code'. 29th July 2008. </li>
-  <li>Replaced 'Laue class' with 'crystal system' since realising while answering comments from referees to [4] and studying international table (again) that ExtSym gives you a ranked list of extinction symbols for a given 'crystal system' not given 'Laue class'.... For example there are two tetragonal Laue classes. ExtSym does not perform a search for each of these individually but for these two combined, i.e. the tetragonal crystal system... 7th August 2008. </li>
-  <li>Added entry to section 'change to the code'. 9th August 2008. </li>
+  <li>The first version of this document 13th Nov. 2006.</li>
   <li>Added ref to follow up ExtSym paper. 24th November 2008. </li>
-  <li>Improved wording  but not content. 11th December 2009.</li>
+  <li>Added link to PANalytical Highscore and link to source code. 11th March 2016.</li>
 </ul>
 <h2>References</h2>
 <OL class=references>
