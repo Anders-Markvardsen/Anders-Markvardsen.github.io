@@ -68,12 +68,12 @@ To return to the main ExtSym page click <a href="main.html">here</a>. <em class=
 <p>The current recipe for using ExtSym with output from GSAS is as follows: (this recipe requires GSAS to be installed)</p>
 <ol>
   <li>Le Bail fit your data using GSAS in a space group with no systematic absent reflections. </li>
-  <li>Unzip this file into a directory of your choice and copy the .exp file generated from step 1. to this directory (plus the data). </li>
+  <li>Unzip <a href="../download/gsas-recipe.zip">this file</a> into a directory of your choice and copy the .exp file generated from step 1. to this directory (plus the data). </li>
   <li>From a command prompt type: <span class="filename_style">gsas_extsym.exe &quot;gsas_directory&quot;</span>, where the argument <span class="filename_style">&quot;gsas_directory&quot;</span> is the name of directory where the GSAS executable is located. If this argument is left out this directory name defaults to &quot;c:\gsas\exe&quot;. (Note do not end the directory name with a backslash!). </li>
   <li>Follow the instructions of the <span class="filename_style">gsas_extsym.exe</span> script. </li>
   <li>Examine the output returned by ExtSym, i.e. <span class="filename_style">table.asc</span> (for information about how to read a <span class="filename_style">table.asc</span> file, see <a href="explain-output.html">here</a>).</li>
 </ol>
-<p>For ExtSym test results using FullProf outputs, see <a href="results.html#gsas_result_table">here</a>.</p>
+<p>For ExtSym test results using GSAS outputs, see <a href="results.html#gsas_result_table">here</a>.</p>
 <h2><a name="section_prodd"></a>How to use ExtSym with output from PRODD </h2>
 <p>PRODD is a free Rietveld refinement program, which can be downloaded from <a href="http://www.ccp14.ac.uk/solution/rietveld_software/index.html">here</a>. Currently PRODD supports the Pawley refinement of time of flight data and constant wavelength neutron and synchrontron data. PRODD is further described in Ref. [3]. </p>
 <p>The current recipe for using ExtSym with output from PRODD is as follows: (this recipe requires <a href="http://www.python.org/download/">Python</a>)</p>
