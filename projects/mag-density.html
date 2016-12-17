@@ -6,28 +6,6 @@
 <link href="css/projects.css" rel="stylesheet" />
 <link rel="prefetch" href="images/three-particle-large.png" />
 <link href="../index.html" rel="home" title="Home" />
-<? 
-switch($_GET['bug']){ 
-case 1:   $image='mag-density1b.jpg';  $alttext='CL=1';  break; 
-case 2:   $image='mag-density2b.jpg';  $alttext='CL=0.1';  break; 
-case 3:   $image='mag-density3b.jpg';  $alttext='CL=0.05';  break; 
-case 4:   $image='mag-density4b.jpg';  $alttext='CL=0.01';  break; 
-case 5:   $image='mag-density5b.jpg';  $alttext='CL=0.005';  break; 
-case 6:   $image='mag-density6b.jpg';  $alttext='CL=0.0025';  break; 
-case 7:   $image='mag-density7b.jpg';  $alttext='CL=0.001';  break; 
-case 8:   $image='mag-density8b.jpg';  $alttext='CL=0.00075';  break; 
-case 9:   $image='mag-density9b.jpg';  $alttext='CL=0.00075';  break; 
-default:  $image='mag-density6b.jpg';    $alttext='CL=0.0025';           
-} 
-
-$path='images/'; 
-$size=getimagesize($path.$image); 
-$margin=300-$size[1]; 
-$margin=$margin/2; 
-
-$showimage='<img src="'.$path.$image.'" '.$size[3].' alt="'.$alttext.'">'; 
-
-?> 
 
 <link rel="stylesheet" href="css/bug-style.css" type="text/css" media="all"> 
 
@@ -82,21 +60,16 @@ put into trying to 'enhance' the data to 'higher' resolution using the maximum e
 modified version of a software program provided by Buck/Macaulay [3] was developed  
 to work with polarised neutron diffraction data. Indeed, using the MaxEnt method the magnetisation
 density maps appear significantly clearer. Isosurfaces at different contour levels (CL) of PrBCO are shown in Fig. 2. An 'isosurface' displays all points with equal density; in Fig. 2 all points with density equal to +/- CL are displayed in dark grey colours and light grey colours respectively.</p>
-
-<div id="bigimage"><? echo $showimage; ?></div> 
-
 <div id="thumbs"> 
-<? 
-echo '<a href="mag-density.php?bug=1&amp;style=0#bigimage" id="bug01"><img src="images/mag-density1s.jpg" width="66" height="137" alt="CL=1"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=2&amp;style=0#bigimage" id="bug02"><img src="images/mag-density2s.jpg" width="66" height="137" alt="CL=0.1"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=3&amp;style=0#bigimage" id="bug03"><img src="images/mag-density3s.jpg" width="66" height="137" alt="CL=0.05"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=4&amp;style=0#bigimage" id="bug04"><img src="images/mag-density4s.jpg" width="66" height="137" alt="CL=0.01"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=5&amp;style=0#bigimage" id="bug05"><img src="images/mag-density5s.jpg" width="66" height="137" alt="CL=0.005"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=6&amp;style=0#bigimage" id="bug06"><img src="images/mag-density6s.jpg" width="66" height="137" alt="CL=0.0025"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=7&amp;style=0#bigimage" id="bug07"><img src="images/mag-density7s.jpg" width="66" height="137" alt="CL=0.001"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=8&amp;style=0#bigimage" id="bug08"><img src="images/mag-density8s.jpg" width="66" height="137" alt="CL=0.00075"></a>'; echo "\n"; 
-echo '<a href="mag-density.php?bug=9&amp;style=0#bigimage" id="bug09"><img src="images/mag-density9s.jpg" width="66" height="137" alt="CL=0.00075"></a>'; echo "\n"; 
-?> 
+<img src="images/mag-density1b.jpg" alt="CL=1">
+<img src="images/mag-density2b.jpg" alt="CL=0.1">
+<img src="images/mag-density3b.jpg" alt="CL=0.05">
+<img src="images/mag-density4b.jpg" alt="CL=0.01">
+<img src="images/mag-density5b.jpg" alt="CL=0.005"> 
+<img src="images/mag-density6b.jpg" alt="CL=0.0025">
+<img src="images/mag-density7b.jpg" alt="CL=0.001"> 
+<img src="images/mag-density8b.jpg" alt="CL=0.00075"> 
+<img src="images/mag-density9b.jpg" alt="CL=0.00075"> 
 </div>
 <p>
 <br class="clearleft" />
@@ -117,15 +90,12 @@ of this page  but not its content. 12th December 2009.</li>
 </ul>
 <h2>References</h2>
 <ol class="references">
-  <li> Chapter 5 in A. J. Markvardsen, <em class="reference">Polarised neutron diffraction measurements of PrBa<span class="subscript">2</span>Cu<span class="subscript">3</span>O<span class="subscript">6+x</span> and the Bayesian statistical analysis of such data</em>, PhD thesis, Oxford University (2000) [<a href="download/thesis_chap5_with_refs.pdf">pdf</a>] </li>
+  <li> Chapter 5 in 
+  <a href="https://ora.ox.ac.uk/objects/uuid:bef0c991-4e1c-4b07-952a-a0fe7e4943f7">A. J. Markvardsen, <em class="reference">Polarised neutron diffraction measurements of PrBa<span class="subscript">2</span>Cu<span class="subscript">3</span>O<span class="subscript">6+x</span> and the Bayesian statistical analysis of such data</em>, PhD thesis, Oxford University (2000)</a> </li>
   <li>A. J. Markvardsen, A. T. Boothroyd, B. Buck, G. J. McIntyre and Th. Wolf, J. Magn. Magn. Mater. 177-181, 502 (1998)</li>
   <li>B. Buck and V. A. Macaulay, in Maximum entropy and Bayesian mehtods, edited by R. Smith, G. J. Erickson and P. O. Neudorfer (Kluwer, Dordrecht, 1992), p. 241 </li>
 </ol>
 <p>&nbsp;</p>
-<div id="bottomtext"> 
-The PHP code used to generate Fig. 2 was initially copied from <a href="http://www.porjes.com/bruciebugs/bugs.php">'Brucies Bug Collection</a>'. <br/>
-Thanks for making this code available for download.
-</div>
 </body>
 </html>
 
