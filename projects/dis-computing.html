@@ -17,10 +17,10 @@ var pageTracker = _gat._getTracker("UA-16154432-3");
 pageTracker._trackPageview();
 } catch(err) {}</script>
 <body text=black bgColor=white>
-<h1>Test of distributed computing network</h1>
+<h1>Test of a non-dedicated distributed network</h1>
 <p class="name">
 <a href="https://www.markvardsen.net">Home</a></p>
-<p><span class="intro_headers">Outcome</span>: Utilise a distributed computing network to optimise the control parameters of a hybrid Monte Carlo search algorithm. </p>
+<p><span class="intro_headers">Outcome</span>: Utilise a distributed computing network to optimise the control parameters of the hybrid Monte Carlo global optimisation algorithm. </p>
 <p>This web page is structured as follows:</p>
 <ul>
   <li>Introduction</li>
@@ -29,14 +29,16 @@ pageTracker._trackPageview();
 <li>References </li>
 </ul>
 <h2>Introduction</h2>
-<p>High performance computing can broadly be split into two categories: parallel computing and distributed computing. The former tends to be associated with a single 'big process' distributed over a number of processors. For example, this might be a large molecular dynamics (MD) simulation. Further, parallel computing tends to imply 'fine grained' parallelisation with libraries such as MPICH and tends to imply dedicated, tightly coupled hardware. Distributed computing, on the other hand, tends to be associated with lots of 'small processes' distributed over a number of processors. For example a series of MD simulations. Further, distributed computing tends to imply 'course grained' parallelisation, where individual copies of the executable are passed between loosely coupled hardware accompanied by different input parameter files.</p>
-<p>In high performance computing a distinction  is also made between 'dedicated' and 'non-dedicated' resources. Dedicated resources are typically specialised hardware whereas non-dedicated resources are associated with existing (mainly desktop) computers, where the CPU power far exceeds that normally demanded by its user to run, for example, word processing software. </p>
-<p>A non-dedicated distributed network (grid) was set up at the ISIS facility. The first test of this network was to study in detail the control parameters of the hybrid Monte Carlo (HMC) search algorithm described in [2]. </p>
+<p>A distributed computing network here refers to a spacial distribution of computing resources. Also, a distinction may be made between
+'dedicated' and 'non-dedicated' resources. Dedicated resources are typically specialised hardware whereas non-dedicated resources can be
+desktop PSs that are sitting idle when not used by its owner. </p>
+<p>A non-dedicated distributed network (grid) was set up at the ISIS facility.
+The first test of this network was to study in detail the control parameters of the hybrid Monte Carlo (HMC) global optimisation algorithm described in [2]. </p>
 <h2>Case study </h2>
-<p>The control parameters of a search algorithm often crucially affect the efficiency (speed) of the algorithm. It is therefore important to be able to select 'good' values for these parameters. The implementation of HMC in [2] contains three such parameters. Fig. 1 shows the number of times (out of 20) that the HMC algorithm solved a given task for different values of the control parameters. On a 
-  
-
-  single 1800MHz PC it would have taken  approximately six months to create the data to produce this plot. On the grid this was completed  in just under two weeks.</p>
+<p>The control parameters of an algorithm may crucially affect the efficiency (speed) of the algorithm.
+The implementation of HMC in [2] contains three such parameters. Fig. 1 shows the number of times (out of 20) that the HMC algorithm solved a given task for different values of the control parameters.
+On a single 1800MHz PC it would have taken approximately six months to create the data for the plot below.
+On the grid this was completed in just under two weeks.</p>
 <div class="figure">
 <img src="images/dis-computing-capsaicin.png" alt="HMC (capsaicin)" width="388" height="229">
 	<br class="clearleft" />
