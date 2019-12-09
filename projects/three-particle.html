@@ -21,25 +21,28 @@ pageTracker._trackPageview();
 <p class="name">
 <a href="https://www.markvardsen.net">Home</a>
 </p>
-<p><span class="intro_headers">Outcomes</span>: (i) This work extends the well-known (three-particle) Calogoro model by allowing the particles to have different charges; (ii) This extended model provide insight into the stability of three particle complexes relative to two particle complexes in one-dimensional quantum wires; (iii) In this process new highly accurate, approximate solutions to the Heun differential equation were found and a new trigonometric identity  extending a trigometric formula by Calogora was identified. </p>
+<p><span class="intro_headers">Outcomes</span>: (i) This work extends the three-particle Calogoro model by allowing the particles to have different charges;
+(ii) This extended model provides information on the relative stability of two and three particle complexes in one-dimensional quantum wires;
+(iii) New analytically approximate solutions to the Heun differential equation were found and a new trigonometric identity extending a formula by Calogora was identified. </p>
 <p>This web page is structured as follows:</p>
 <ul>
   <li>Setting the scene</li>
-  <li>Extending the Calogoro  three particle model</li>
+  <li>Extending the Calogoro three particle model</li>
 <li>History of this document</li>
 <li>References </li>
 </ul>
 <h2>Setting the scene </h2>
-<p>Imagine a one-dimensional (1D) system containing three electrons restrained to move within a segment by harmonic potentials. In classical mechanics a harmonic potential may represented a spring. Consider a point along the 1D axis and denote this point the origin. Attach three springs to the origin and the other ends of the springs to each of the three electrons. This 1D system may be visualised as follows:</p>
+<p>Imagine a one-dimensional (1D) system containing three electrons restrained to move within a segment by harmonic potentials.
+In classical mechanics a harmonic potential may represent a spring. Consider a point along the 1D axis and denote this point the origin. Attach three springs to the origin and the other ends of the springs to each of the three electrons. This 1D system may be visualised as follows:</p>
 <div class="figure">
   <a href="javascript:display('images/three-particle-model-big.png')">
     <img src="images/three-particle-model.png" alt="Three particles in one dimension" width="373" height="60" border="0" title="Click to view figure in larger format" /></a>
     <br class="clearleft" />
       <span class="figurecaption"><b>Figure 1</b>: 
-An illustration of the three particle system. The figure is meant to help visualise the model. Click on the image to view it in a larger format. </span></div>
-<p>Two electrons expel each other by the Coulomb interaction. Hence, the model in Fig. 1 would be very predictable (and boring) if no springs were present; since the electrons would just expel each other until separated by an infinite distance. However, by including the springs we have a much more interesting situation where electrons try to expel each other and the springs try to force the electrons towards a center point (the origin). </p>
+An illustration of the three particle system. </span></div>
+<p>Electrons expel each other by the Coulomb interaction. Hence, the model in Fig. 1 would be very predictable (and boring) if no springs were present; since the electrons would just expel each other until separated by an infinite distance. However, by including the springs we have a much more interesting situation where electrons try to expel each other and the springs try to force the electrons towards a center point (the origin). </p>
 <p>The &quot;physics&quot; motivation for studying this model is linked to  nano-structure devices; an example is a so-called quantum-dot device trapping a single electron. </p>
-<p>Although the model in Fig. 1 may look simple the quantum mechanical equation for this model cannot be solved analytically. However, Calogoro [1] showed that, using a modified Coulomb potential an analytical solution could be found - the corresponding model is today known as the Calogoro model [1].</p>
+<p>Although the model in Fig. 1 may look simple the quantum mechanical equation for this model cannot be solved analytically. However, Calogoro [1] showed that, using a modified Coulomb potential an analytical solution can be found - the corresponding model is today known as the Calogoro model [1].</p>
 <p>The Coulomb potential between two electrons decays as one over the distance between the electrons; an effect of this is that the further the electrons are apart the weaker the repulsion between them. The modification Calogoro made was to say: assume that the potential between two electrons decay as one over the <em>squared</em> distance between the electrons. Mathematically, this modified Coulomb potential can be written as</p>
 <div class="equation">
 <img src="images/three-particle-one-over-squared-distance.png" width="90" height="24" border="0" align="middle" />
@@ -50,15 +53,19 @@ An illustration of the three particle system. The figure is meant to help visual
 <div class="equation">
 <img src="images/three-particle-one-over-distance.png" width="80" height="24" border="0" align="middle" /><span class="equation_space">.</span>
 </div>
-<p>The advantage of using the modified Coulomb potential is that an analytical solution can more easily be found.</p>
 <H2>Extending the Calogoro three particle model </H2>
-<p>We took on the challenge of extending the work of Calogoro [1] by considering not only the case of three identical electrons in 1D but also the case of two electrons and one 'hole'; a 'hole' might be thought of as an electron with positive charge rather than having a negative charge. Studying this system took place in two stages.</p>
-<p>1. <strong>Doing the mathematics</strong>. In [2] we show that solving the Schrodinger equation for the two-electron-one-hole system described above can be reduced to the problem of solving a Heun differential equation. Heun's equation is fairly well studied in the literature [3], although cases for which analytical solutions to this equation are known are rare. Although we cannot in general solve Heun's equation for our problem analytically, we obtained a set of highly accurate, approximate solutions for the regions of physical interest. In this process the trigonometric formula was identified </p>
+<p>We took on the challenge of extending the work of Calogoro [1] by allowing one of the three electrons to be a 'hole';
+a 'hole' is semiconductor speak and models a positively charged electron. Studying this system took place in two stages.</p>
+<p>1. <strong>Doing the mathematics</strong>. I demonstrated that solving the Schrodinger equation for the two-electron-one-hole system can be reduced to the problem of solving
+a Heun differential equation. Heun's equation is fairly well studied in the literature [3],
+although cases for which analytical solutions to this equation are known are rare.
+However, through further painstaking considerations analytically approximate solutions accurate for the regions of physical interest was found; and in this process the following new trigonometric formula was identified </p>
 <div class="figure">
   <img src="images/three-particle-trig-formula.png" alt="Trigonometric formula" width="417" height="51">
     <br class="clearleft" />
 </div>  
-<p>which for the special case f = -g reduces to the trigonomtric identity found by Calogero [1].  Denote q<span class="subscript">ee</span> to be the strength of the interaction between two electrons and q<span class="subscript">eh</span> the strength of the interaction between a hole and an electron, then it was observed that the potential energy of the Hean differential equation can be approximated highly accurately as shown in the figure below</p>
+<p>which for the special case f = -g reduces to the trigonomtric identity found by Calogero [1].
+Denote q<span class="subscript">ee</span> to be the strength of the interaction between two electrons and q<span class="subscript">eh</span> the strength of the interaction between a hole and an electron, then it was observed that the potential energy of the Hean differential equation can be approximated highly accurately as shown in the figure below</p>
 <div class="figure">
   <img src="images/three-particle-approximation.png" alt="Compare exact and approximate potential function" width="447" height="324">
     <br class="clearleft" />

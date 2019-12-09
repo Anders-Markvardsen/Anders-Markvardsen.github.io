@@ -21,7 +21,7 @@ pageTracker._trackPageview();
 <p class="name">
 <a href="https://www.markvardsen.net">Home</a>
 </p>
-<p><span class="intro_headers">Outcome</span>: Introduction of novel computer search algorithm in the field of structure determination from powder diffraction data. </p>
+<p><span class="intro_headers">Outcome</span>: Introduction of existing computer search algorithm into the field of structure determination from powder diffraction data. </p>
 <p>This web page is structured as follows:</p>
 <ul>
   <li>Introduction</li>
@@ -30,7 +30,7 @@ pageTracker._trackPageview();
 <li>References </li>
 </ul>
 <h2>Introduction</h2>
-<p>The hybrid Monte Carlo (HMC) algorithm presented here has it origin in numerical simulations in lattice field theory and was brought to the attention of ISIS by John Johnston. It is a method that aims to combine key components of molecular dynamics and the Monte Carlo approach into one efficient algorithm for exploring a search space.</p>
+<p>The hybrid Monte Carlo (HMC) global optimisation algorithm presented here has its origin in numerical simulations in lattice field theory. It is a method that aims to combine key components of molecular dynamics and the Monte Carlo approach into one efficient algorithm for exploring a search space.</p>
 <p>Here the position and orientation of molecular fragments and internal torsion angles within fragments make up the search space. These 'degrees of freedom' (DOF) can be varied and the collection of all possible DOF configurations  defines the search space. A figure-of-merit (FOM) function is associated with the search space, that is, for each configuration a FOM value can be calculated. In solving a crystal structure, the goal is to search for the configuration that matches the lowest possible value of the FOM function; this configuration is the global minimum of the FOM. </p>
 <p>The HMC algorithm [1] takes the following approach. Imagine a fictive particle whose coordinates are defined by the DOF of the search space. Further, interpret the FOM function as the potential energy function of this fictive particle. Then imagine 'kicking' this particle and observing the path it follows according to the classical (Hamiltonian) equation of motions &ndash; this is the molecular dynamics component of the algorithm. The Monte Carlo component is included to 'patch' a known problem of molecular dynamics. Due to numerical rounding errors it is computationally difficult to maintain the fictive particle on the (correct) path as dictated by the Hamiltonian equation of motions, and the particle tends to 'drift' off this path. To reduce the 'damage' of this effect, at appropriate intervals the particle is 'stopped' and an assessment is made (using a Metropolis criterion) whether the particle has moved too far of its path &ndash; this is the Monte Carlo component of the algorithm;  if the particle has drifted too far  it is returned to its previous position. Regardless of whether the particle is returned to its previous position  the particle is 'kicked' off in a new direction in the search space.</p>
 <h2>Some results</h2>
